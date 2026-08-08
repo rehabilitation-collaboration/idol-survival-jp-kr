@@ -7,11 +7,11 @@
     母集団サイズ    1,182 組 (1996-2025 デビュー)
     3 年以内の離脱  approximately 45%
 
-    .venv/bin/python scripts/build_kr_population.py
+    .venv/bin/python scripts/build_en_population.py {kr|jp}
 
 出力:
-    data/kr_survival.parquet        韓国側の生存データ
-    results/method_validation.md    Kim (2026) との照合レポート
+    data/{country}_en_survival.parquet   生存データ (kr_en / jp_en)
+    results/method_validation.md         Kim (2026) との照合レポート (kr のみ)
 """
 import json
 import os
