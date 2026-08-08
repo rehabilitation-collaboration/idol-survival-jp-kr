@@ -1,0 +1,6 @@
+pandas
+pyarrow
+lifelines
+matplotlib
+requests
+pytest

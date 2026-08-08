@@ -1,0 +1,14 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+data/*.parquet
+output/
+.DS_Store
+data/raw/
+data/*.jsonl
+# probe の生ログは再実行で再現できる。分析成果 (results/analysis.txt 等) は追跡する
+results/probe_*.txt
+results/*.log
+# 原著 PDF は著作権上 public repo に置かない (KCI プレビュー)
+refs/*.pdf
