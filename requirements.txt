@@ -1,6 +1,7 @@
 pandas
 pyarrow
 lifelines
+statsmodels
 matplotlib
 requests
 pytest
