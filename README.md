@@ -2,7 +2,7 @@
 
 Replication and cross-national extension of a full-census survival analysis of idol groups.
 
-**Status: work in progress.** The Japanese population has been constructed (n = 1,346). Survival estimation, the Korean population, and the manuscript are not yet done. No results should be cited from this repository at this stage.
+**Status: analysis complete, manuscript not yet written.** Both populations are built (Japan n = 1,346 from ja.wikipedia; Korea n = 549 from en.wikipedia) and the survival analysis has been run. The manuscript has not been written and nothing has been peer reviewed, so results here should be treated as a preprint-stage working record rather than as published findings.
 
 ## Research question
 
@@ -34,6 +34,25 @@ Groups whose opening sentence names a foreign country without also mentioning Ja
 
 Three death definitions are implemented (strict / loose / conservative) and reported side by side, because "解散" (disbandment), "活動休止" (suspension of activity) and "無期限活動休止" (indefinite suspension) are distinct events in Japan. Groups without an end date are treated as right-censored.
 
+## Results so far
+
+Full output, including every sensitivity analysis, is in [`results/analysis.md`](results/analysis.md).
+
+The level and the shape disagree. Three-year exit rates are indistinguishable between the two countries, but the hazard functions are not the same shape.
+
+| | Japan (ja.wikipedia, n = 1,346) | Korea (en.wikipedia, n = 549) |
+|---|---|---|
+| Exit within 3 years | 19.7% (17.7–22.0) | 20.1% (16.9–23.8) |
+| Exit within 7 years | 43.5% | 41.6% |
+| Hazard at year 7 | 7.9% (43/546) | **9.5% (23/243)** |
+| Excess over neighbouring years (5, 6, 8, 9) | ratio 0.96, p = 0.642 | **ratio 1.63, p = 0.016** |
+
+Korea's dissolution hazard rises at year seven — the length of the standard exclusive contract — and falls back immediately afterwards (5.4% at year 6, 9.5% at year 7, 4.4% at year 8). Japan, which has no equivalent contract term, shows no such peak under any of the three death definitions. A discrete-time hazard model with country-specific smooth baselines puts the Korean excess at 2.72 times the Japanese one (95% CI 1.07–6.88, p = 0.035).
+
+Seven falsification checks precede that claim rather than follow it; two alternative explanations survive them and are stated as limitations. See §4.3 of the results file.
+
+On the methodological question: reconstructing the Korean population with this method recovers 549 of Kim's 1,182 groups (46.4%) and a three-year exit rate 24.9 points below the published figure. The gap is reported as a finding about the limits of Wikipedia-based census construction, not hidden.
+
 ## Reproduction
 
 ```bash
@@ -45,6 +64,9 @@ python3 scripts/fetch_jp_population.py
 # Apply the classification and build the population
 .venv/bin/python scripts/build_jp_population.py
 
+# Survival analysis: writes results/analysis.md and plots/
+.venv/bin/python scripts/analyze_survival.py
+
 .venv/bin/python -m pytest tests/ -q
 ```
 
@@ -55,10 +77,11 @@ Scripts under `scripts/probe_*.py` reproduce the measurements that justify each 
 ```
 PLAN.md          research plan and design decisions (source of truth)
 LITERATURE.md    bibliography, with citation-eligibility status per source
-src/             classification logic
-scripts/         data acquisition and probes
-tests/           unit tests for classification and population integrity
-results/         summaries and the borderline-case list
+src/             classification logic and survival-analysis components
+scripts/         data acquisition, probes, and the analysis driver
+tests/           unit tests (179)
+results/         analysis.md plus the per-phase measurement reports
+plots/           Kaplan-Meier curves and the discrete-time hazard figure
 data/            generated datasets (not tracked)
 ```
 
