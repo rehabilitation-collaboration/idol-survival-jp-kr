@@ -34,10 +34,21 @@ Phase 0 (ベンチマーク論文の収集・精読) の記録。
 
 - **書誌**: Kim, Jeong-Seob. "Survival and Hit Structure in the K-pop Idol Music Industry: A Full Census Analysis of 1,182 Groups Debuted Between 1996 and 2025 (Since H.O.T.)" *Journal of the Korea Entertainment Industry Association* 20(4): 71-80, 2026.
 - DOI `10.21184/jkeia.2026.7.20.4.71` (**doi.org で未解決・404**) / KCI ID `ART003366423`
-- 状態: ✅ 書誌確認済 (KCI) / ❌ **本文未入手 (1 ページ目のみ)**
-- 入手済ファイル: `refs/Kim2026_JKEIA_20-4_p71-80_PREVIEW-PAGE1-ONLY.pdf`
-- **引用可能な範囲**: 英文アブストラクト記載の値のみ。約 45% が デビュー後 3 年以内に市場から離脱 (= 標準 7 年専属契約期間の 42.9% 時点)
-- **引用禁止**: 報道ベースの補足値 (3 年生存率 55.03% / 平均活動 4.12 年 / ボーイズ 5.11 年 / ガールズ 3.13 年)、および「損益分岐点突破 4% 未満」。本文入手まで使わない (PLAN のゴール宣誓に失敗条件として明記)
+- 状態: ✅ 書誌確認済 (KCI) / ❌ **本文未入手 (1 ページ目のみ)** / 🚫 **本文は取得しない方針で確定 (2026-08-08 瑞樹判断)**
+- 入手済ファイル: `refs/Kim2026_JKEIA_20-4_p71-80_PREVIEW-PAGE1-ONLY.pdf` (書誌 + 英文アブストラクト全文 + キーワード)
+
+**引用可能な値の全量** (2026-08-08 に PDF を実読して確定・これ以外は存在しない):
+
+| 項目 | 値 |
+|---|---|
+| 母集団 | 1,182 idol groups (1996-2025 デビュー) |
+| 3 年以内の市場退出 | approximately 45% |
+| 専属契約期間比 | about 42.9% of the standard seven-year exclusive contract period |
+| 生存の臨界期間 | デビュー後 1-3 年 |
+
+- **手法**: statistical analysis, cohort analysis, **expert interviews** (混合手法)。本研究は純定量なのでインタビュー部分は再現しない
+- **定性的知見 (数値なし)**: winner-take-all パターン / 中ヒット → 大ヒット → 累積メガセラーへ進むグループ数の急減
+- 🚫 **引用禁止 (アブストラクトに存在しないことを実読で確認)**: 3 年生存率 55.03% / 平均活動 4.12 年 / ボーイズ 5.11 年 / ガールズ 3.13 年 / アルバム 30 万枚超 42 組 / ミリオン 19 組 / 「損益分岐点突破 4% 未満」。**すべて報道由来。本文を取得しない決定をしたので、これらは恒久的に使えない**
 - Keywords: K-Pop Idols, Competition, Winner-takes-most, **Death Valley**, Cohort Analysis
 
 ---
@@ -97,7 +108,7 @@ Phase 0 (ベンチマーク論文の収集・精読) の記録。
 
 ## 6. 未収集・要追加 (Phase 6 の執筆前に必須)
 
-- [ ] **Kim (2026) 本文 pp.71-80**。著者メール `lake@sungshin.ac.kr` / DBpia 個人購入 / 機関アクセス
+- ~~Kim (2026) 本文 pp.71-80~~ → 🚫 **取得しない方針で確定 (2026-08-08 瑞樹判断)**。アブストラクト記載の 4 項目のみで進める
 - [ ] **CiNii での日本語文献探索**。日本のアイドル産業の定量研究が国内誌にある可能性 (OpenAlex は日本語誌のカバーが弱い)
 - [ ] **KCI での韓国語文献探索**。Kim (2026) の先行研究 (同誌の過去論文) を辿る
 - [ ] 上記 §3・§4 の**精読**とデータ・手法・結果・Limitations の記録
