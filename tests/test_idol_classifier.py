@@ -64,7 +64,7 @@ class TestClassify:
 
     def test_韓国グループは日本の母集団から除外される(self):
         r = classify([], LEAD_TWICE)
-        assert r["is_korean"] is True
+        assert r["is_foreign"] is True
         assert r["is_idol"] is False
 
     def test_冒頭がアイドルでも韓国なら除外される(self):
@@ -72,6 +72,37 @@ class TestClassify:
         r = classify([], "2PMは、韓国の6人組男性アイドルグループ。")
         assert r["c2_lead_idol"] is True
         assert r["is_idol"] is False
+
+    @pytest.mark.parametrize(
+        "lead",
+        [
+            # ja.wikipedia の年別カテゴリは全世界対象なので、韓国以外の外国も混入する
+            "SNH48は、中華人民共和国・上海市を中心に活動する女性アイドルグループ。",
+            "S.H.Eは、台湾のアイドルユニット。",
+            "アトミック・キトゥンは、イギリスのリバプールで結成されたアイドルグループ。",
+            "Jump5は、アメリカのアイドル・ダンスグループである。",
+        ],
+    )
+    def test_韓国以外の外国グループも除外される(self, lead):
+        r = classify([], lead)
+        assert r["is_foreign"] is True
+        assert r["is_idol"] is False
+
+    def test_日本と外国の両方に言及があれば残す(self):
+        # 日韓両拠点のグループ。実測で 4 件あり、境界事例として主分析に含める
+        r = classify([], "AWEEKは、2018年に結成した日本・韓国両国で活動する7人組の男性アイドルグループ。")
+        assert r["is_foreign"] is False
+        assert r["is_multinational"] is True
+        assert r["is_idol"] is True
+        assert r["definition_sensitive"] is True
+
+    def test_ダンスボーカルのみで拾った場合は定義感応と印付けされる(self):
+        r = classify([], LEAD_EXILE)
+        assert r["definition_sensitive"] is True
+
+    def test_カテゴリと冒頭の両方で陽性なら定義感応ではない(self):
+        r = classify(["日本の女性アイドルグループ"], LEAD_MOMUSU)
+        assert r["definition_sensitive"] is False
 
     def test_カテゴリのみ陽性なら不一致フラグが立つ(self):
         r = classify(["日本の女性アイドルグループ"], "○○は、日本の音楽ユニット。")

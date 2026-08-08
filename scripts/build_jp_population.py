@@ -31,7 +31,7 @@ YEARS = list(range(1996, 2026))
 
 
 def load_pages():
-    rows, broken = [], 0
+    rows, broken, seen = [], 0, set()
     with open(PAGES_PATH, encoding="utf-8") as f:
         for line in f:
             try:
@@ -42,6 +42,13 @@ def load_pages():
                 continue
             if rec.get("missing"):
                 continue
+            # 別名 (改名前など) からのリダイレクトで同じ記事を 2 回取っている。
+            # 記事タイトルが同一なら同じグループなので先勝ちで落とす。
+            # 「VENUS (1997年結成のアイドルユニット)」と「VENUS (2007年…)」のように
+            # 曖昧回避が違うものは別グループなので、括弧は落とさない
+            if rec["title"] in seen:
+                continue
+            seen.add(rec["title"])
             rows.append(rec)
     if broken:
         print(f"警告: 破損行 {broken} 件をスキップ")
@@ -79,7 +86,8 @@ def build():
         "group_id", "name", "country", "source_lang", "sex",
         "formed_year", "dissolved_year", "is_censored",
         "c1_category", "c2_lead_idol", "c3_dance_vocal",
-        "is_idol", "is_idol_strict", "is_seiyu", "signal_disagree",
+        "is_idol", "is_idol_strict", "is_seiyu", "is_multinational",
+        "signal_disagree", "definition_sensitive",
         "idol_signal", "lead_sentence",
     ]
     pop[cols].to_parquet(OUT_PARQUET, index=False)
@@ -101,24 +109,33 @@ def write_summary(df, pop, out_of_window):
         ("c1_category", "C1 アイドル系カテゴリ"),
         ("c2_lead_idol", "C2 冒頭定義文に「アイドル」"),
         ("c3_dance_vocal", "C3 冒頭定義文にダンス&ボーカル"),
-        ("is_korean", "除外: 韓国グループ"),
+        ("is_foreign", "除外: 外国のグループ"),
+        ("is_multinational", "参考: 日本と外国の両方に言及"),
         ("is_seiyu", "参考: 声優ユニット"),
     ]:
         c = int(df[key].sum())
         a(f"  {label:<32} {c:>5} ({c/n:.1%})")
     a("")
-    a(f"  ルール D 陽性 (C1 or C2 or C3、韓国除外) {int(df['is_idol'].sum()):>5}")
-    a(f"  ルール C 陽性 (C1 or C2、韓国除外)       {int(df['is_idol_strict'].sum()):>5}")
+    a(f"  ルール D 陽性 (C1 or C2 or C3、外国除外) {int(df['is_idol'].sum()):>5}")
+    a(f"  ルール C 陽性 (C1 or C2、外国除外)       {int(df['is_idol_strict'].sum()):>5}")
     a(f"  ※ D にのみ含まれる (ダンス&ボーカル系)   {int((df['is_idol'] & ~df['is_idol_strict']).sum()):>5}")
     a("")
     a(f"観測窓 1996-2025 外・結成年不明で除外: {out_of_window} 件")
     a(f"最終母集団: {len(pop)} 件")
     a("")
 
-    a("--- 判定不一致率 (PLAN の分岐条件・20% 超で発動) ---")
+    a("--- 分岐条件の判定 (PLAN: 境界事例が母集団の 20% 超で発動) ---")
+    sens = int(pop["definition_sensitive"].sum())
+    rate = sens / max(len(pop), 1)
+    a(f"  定義感応ケース / 母集団 = {sens}/{len(pop)} = {rate:.1%}")
+    a("    内訳: ダンス&ボーカルのみで拾った / 声優ユニット / 日本と外国の併記")
+    a(f"  判定: {'★分岐条件 発動 (20% 超)' if rate > 0.20 else '20% 以下・ルール D を維持'}")
+    a("")
     dis = int(pop["signal_disagree"].sum())
-    a(f"  C1 XOR C2 の件数 / 母集団 = {dis}/{len(pop)} = {dis/max(len(pop),1):.1%}")
-    a(f"  判定: {'★分岐条件 発動 (20% 超)' if dis/max(len(pop),1) > 0.20 else '20% 以下・ルール D を維持'}")
+    a("  [参考] C1 XOR C2 (2 ソースの相補性・分岐条件には使わない)")
+    a(f"    {dis}/{len(pop)} = {dis/max(len(pop),1):.1%}")
+    a("    ※ 実測で C2 のみ陽性の大半は旧ジャニーズ系の正しいアイドルであり、")
+    a("       この値は判定の誤りではなく 2 つのソースが補い合っている量を表す")
     a("")
 
     a("--- 判定シグナルの組み合わせ内訳 ---")
