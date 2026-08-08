@@ -20,7 +20,10 @@ UA = "IdolSurvivalResearch/0.1 (infobox field census)"
 SAMPLE_LIMIT = 150
 
 # Infobox のフィールド行。値が複数行に渡るケースは名前だけ拾えればよい。
-FIELD = re.compile(r"^\s*\|\s*([A-Za-z0-9_ぁ-んァ-ヶ一-龠]+)\s*=", re.M)
+# ★ 2026-08-08 修正: 旧実装は `ァ-ヶ` で書いていたため長音符「ー」(U+30FC) が
+#   範囲外になり、「レーベル」「メンバー」が 1 件も数えられていなかった。
+#   このため PLAN に「日本語『レーベル』は 0 件」と誤記録された。
+FIELD = re.compile(r"^\s*\|\s*([\w ・]+?)\s*=", re.M)
 
 # アイドル判定に使えそうな候補。
 # ★日本語版 Wikipedia には {{Infobox Musician}} (日本語フィールド名) と
