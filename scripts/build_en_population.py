@@ -21,6 +21,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 from en_classifier import classify_en  # noqa: E402
+from sex_en import infer_sex_en, sex_from_categories, sex_from_lead  # noqa: E402
 from wikitext import extract_field  # noqa: E402
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
@@ -54,6 +55,13 @@ def build(pages, country):
     for title, p in pages.items():
         raw_ya = extract_field(p.get("wikitext", ""), YEARS_ACTIVE)
         r = classify_en(p.get("categories", []), p.get("lead", ""), raw_ya)
+        # 性別。`kind` (リード文由来) だけでは韓国 20% / 日本 40% が不明になるので、
+        # 付与率の高いカテゴリを主ソースにして別途導出する
+        r["sex"], r["sex_source"] = infer_sex_en(
+            p.get("categories", []), p.get("lead", ""))
+        # 2 ソースの一致率を後で測れるよう、それぞれの判定も残す
+        r["sex_cat"] = sex_from_categories(p.get("categories", []))
+        r["sex_lead"] = sex_from_lead(p.get("lead", ""))
         r["group_id"] = title
         r["name"] = title
         r["country"] = country

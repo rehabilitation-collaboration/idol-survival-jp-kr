@@ -20,6 +20,7 @@ import sys
 import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+from agency import INDEPENDENT_LABEL, primary_agency  # noqa: E402
 from wikitext import extract_field  # noqa: E402
 from years_active import detect_lead_end, parse_years_active  # noqa: E402
 
@@ -30,6 +31,9 @@ OUT_PARQUET = os.path.join(ROOT, "data", "jp_survival.parquet")
 OUT_REPORT = os.path.join(ROOT, "results", "source_agreement.md")
 
 YEARS_ACTIVE = ["活動期間", "活動年数", "Years_active", "years_active", "Years active"]
+# 日本語版は {{Infobox Musician}} と {{Infobox musical artist}} が混在するので
+# 必ず日英のエイリアスで合算する (単独だと 40.7%・合算で 80.7%)
+AGENCY_FIELDS = ["事務所", "所属事務所", "Production", "production", "Agency", "agency"]
 
 # 打ち切り時点。母集団を取得した日で全グループを行政的に打ち切る
 CENSOR_YEAR = 2026
@@ -89,8 +93,36 @@ def build_rows(pop, pages):
             # --- リード文 ---
             "lead_end_reason": lead_end,
             "lead_end_year": lead_end_year,
+            # --- 共変量 (判定には使わない・Cox の事務所規模用) ---
+            "agency": primary_agency(extract_field(rec.get("wikitext", ""), AGENCY_FIELDS)),
         })
     return pd.DataFrame(rows)
+
+
+def add_agency_size(df):
+    """事務所規模を付ける。
+
+    規模は「母集団内で同じ事務所に属するグループ数」で測る。手作りリストを
+    持ち込まずに済むが、観測窓 30 年分の累積なので、長く存続した事務所ほど
+    大きく出る粗い代理指標であることを Methods に書くこと。
+
+    欠損 (Infobox に事務所フィールドが無い 19.5%) は落とさずに独立の水準として
+    扱う。落とすと「記事が薄いグループ」が系統的に消え、記事化バイアスと同じ
+    向きに推定を歪める。
+    """
+    size = df["agency"].value_counts()
+    df["agency_size"] = df["agency"].map(size)
+
+    def klass(r):
+        if not r["agency"]:
+            return "unknown"
+        if r["agency"] == INDEPENDENT_LABEL:
+            return "independent"
+        n = r["agency_size"]
+        return "1" if n == 1 else "2-4" if n <= 4 else "5-9" if n <= 9 else "10+"
+
+    df["agency_class"] = df.apply(klass, axis=1)
+    return df
 
 
 def add_definitions(df):
@@ -221,7 +253,7 @@ def write_report(df):
 def main():
     pop = pd.read_parquet(POP)
     pages = load_pages(set(pop["group_id"]))
-    df = add_definitions(build_rows(pop, pages))
+    df = add_agency_size(add_definitions(build_rows(pop, pages)))
     df.to_parquet(OUT_PARQUET, index=False)
     write_report(df)
     print(f"\n生存データ {len(df)} 件 -> {OUT_PARQUET}")
