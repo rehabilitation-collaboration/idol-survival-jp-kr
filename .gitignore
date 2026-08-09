@@ -12,3 +12,6 @@ results/probe_*.txt
 results/*.log
 # 原著 PDF は著作権上 public repo に置かない (KCI プレビュー)
 refs/*.pdf
+# 韓国政府の一次資料 (HWP)。再配布条件を確認していないため public repo には出さない
+# 取得手順は refs/REFERENCE-kr-standard-exclusive-contract.md にある
+refs/*.hwp
