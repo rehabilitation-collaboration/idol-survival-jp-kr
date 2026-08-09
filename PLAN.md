@@ -616,7 +616,9 @@ Kim (2026) がアブストラクトで述べる「中ヒットから大ヒット
 
 - [x] **専属契約制度の一次確認 (日韓)** → `refs/REFERENCE-contract-institutions-jp-kr.md` (2026-08-09)
 - [x] **著者情報・Ethics 節の先例踏襲を確定** (先例 `kokutai-home-advantage/manuscript.md` を実読・2026-08-09)
-- [x] **manuscript.md 執筆** (2026-08-09)。IMRaD・**Abstract 292 words** (target 内)・**PDF 24pp** (25pp target 内)・Limitations 7 項目 (5-7 上限内)
+- [x] **manuscript.md 執筆** (2026-08-09)。IMRaD・**Abstract 296 words**・**PDF 26pp**・Limitations 7 項目
+- [x] **GPT 査読 round-1 対応** (2026-08-09)。10 点中 9 点を消化。**指摘 1 (outcome-dependent sampling) と指摘 3 (debut 起点) は実証で否定**し Results の新節にした → `results/cohort_definition_check.md` / `results/debut_clock_check.md`
+- [x] 🔴 **`{{Start date}}` テンプレートの取りこぼしを修正** (2026-08-09)。韓国の死亡が 224 → 285 件に増え、**3 年離脱率 20.1% → 25.0%**。「水準は日韓で同じ」という旧結論は誤りだった (詳細は handoff の Lessons Learned)
 - [x] **参考文献の全件検証** (CrossRef・2026-08-09)。**誤り 2 件を修正** — Im, Song & Jung (2018) の頁は 1614-1625 ではなく **1675-1686** / Peterson & Berger (1975) は終了頁が CrossRef・OpenAlex とも未登録のため**開始頁のみ**記載
 - [x] **PDF 生成** (`generate_pdf.py`・weasyprint) → `pdftotext -layout` self-QA。**全 13 表・全 3 図が出力・日韓 CJK も正常**
 - [ ] asura-monju レビュー → 修正
