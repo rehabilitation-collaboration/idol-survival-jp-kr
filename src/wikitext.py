@@ -79,6 +79,11 @@ def clean_value(value):
     v = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]*)\]\]", r"\1", v)
     # 箇条書きテンプレートは中身だけ残す
     v = re.sub(r"\{\{\s*(?:Plainlist|Hlist|Hlist-comma|ublist|unbulleted list)\s*\|", " ", v, flags=re.I)
+    # 🔴 {{Start date|2009}} / {{End date|2018}} は年を抱えている。
+    # 下の一括除去に任せると年ごと消えるので、先に年だけ取り出す
+    # (2026-08-09 に en 側で同じ書式を取りこぼしていたのが判明したため揃えた)。
+    # 日本語版の年パターンは「2009年」なので「年」を補ってから戻す。
+    v = re.sub(r"\{\{\s*(?:start|end)[ _]?date[^|}]*\|\s*(\d{4})[^}]*\}\}", r" \1年 ", v, flags=re.I)
     v = re.sub(r"\{\{[^{}]*\}\}", " ", v)
     v = v.replace("{{", " ").replace("}}", " ")
     v = re.sub(r"''+", "", v)

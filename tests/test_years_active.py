@@ -50,6 +50,25 @@ class TestParseYearsActive:
         assert r["start_year"] == 2025
         assert r["is_ongoing"] is True
 
+    def test_startdateテンプレートでも値が取れる(self):
+        # 🔴 2026-08-09 発覚。{{Start date|YYYY}} を一括除去に任せると年ごと消え、
+        # 活動期間が丸ごと欠損になっていた (母集団 1,346 件中 10 件が該当)。
+        # 同じ書式を en 側で取りこぼしていたのが発端で、日本側も調べて見つかった。
+        r = parse_years_active("{{Start date|2009}} - {{End date|2018}}")
+        assert r["start_year"] == 2009
+        assert r["end_year"] == 2018
+
+    def test_startdateテンプレートで終了年がなければ現役(self):
+        r = parse_years_active("{{Start date|2013}}-")
+        assert r["start_year"] == 2013
+        assert r["end_year"] is None
+        assert r["is_ongoing"] is True
+
+    def test_startdateテンプレートと素の年の混在(self):
+        r = parse_years_active("{{Start date|2023}} - 2025年（活動休止）")
+        assert r["start_year"] == 2023
+        assert r["end_year"] == 2025
+
     def test_終了年と活動停止の併記を両方取る(self):
         # 既知課題: Are 湯 Lady
         r = parse_years_active("2014年5月 - 2016年9月<br />※活動停止中")

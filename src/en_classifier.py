@@ -57,6 +57,25 @@ def _year_from_categories(categories, pattern):
     return min(ys) if ys else None
 
 
+def normalize_years_active(raw):
+    """years_active の生値を、年が素で並んだ文字列に均す。
+
+    🔴 `{{start date|2012}}` は中に開始年を抱えている。テンプレートを丸ごと落とすと
+    '{{Start date|2012}}–2021' が ' –2021' になり、開始年が消えるだけでなく残った
+    2021 を「唯一の年」と誤読して終了年の判定まで壊れる (2026-08-09 に実測して発覚)。
+    テンプレートを消す前に start date の年を取り出しておくこと。
+    """
+    if not raw:
+        return ""
+    v = re.sub(r"<!--.*?-->", " ", raw, flags=re.S)
+    v = re.sub(r"<ref[^>]*>.*?</ref>|<ref[^>]*/>", " ", v, flags=re.S)
+    v = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]*)\]\]", r"\1", v)
+    # {{start date|YYYY|MM|DD}} / {{end date|YYYY}} 等は年だけ残す
+    v = re.sub(r"\{\{\s*(?:start|end)[ _]?date[^|}]*\|\s*(\d{4})[^}]*\}\}", r" \1 ", v, flags=re.I)
+    v = re.sub(r"\{\{[^{}]*\}\}", " ", v)
+    return v
+
+
 def parse_years_active_en(raw):
     """英語版 Infobox の years_active から終了年を取る。
 
@@ -65,10 +84,7 @@ def parse_years_active_en(raw):
     """
     if not raw:
         return None, False
-    v = re.sub(r"<!--.*?-->", " ", raw, flags=re.S)
-    v = re.sub(r"<ref[^>]*>.*?</ref>|<ref[^>]*/>", " ", v, flags=re.S)
-    v = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]*)\]\]", r"\1", v)
-    v = re.sub(r"\{\{[^{}]*\}\}", " ", v)
+    v = normalize_years_active(raw)
     if re.search(r"present|current", v, re.I):
         return None, True
     years = [int(y) for y in re.findall(r"\b(19\d{2}|20\d{2})\b", v)]
@@ -78,6 +94,12 @@ def parse_years_active_en(raw):
     if re.search(r"[-–—]", tail):
         return None, True
     return (years[-1], False) if len(years) >= 2 else (None, False)
+
+
+def parse_years_active_start_en(raw):
+    """years_active の開始年 (デビューの代理指標)。"""
+    years = re.findall(r"\b(19\d{2}|20\d{2})\b", normalize_years_active(raw))
+    return int(years[0]) if years else None
 
 
 def detect_disband_year(lead):

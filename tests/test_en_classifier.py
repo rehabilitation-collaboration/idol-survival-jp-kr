@@ -15,6 +15,7 @@ from en_classifier import (  # noqa: E402
     detect_disband_year,
     first_sentence,
     parse_years_active_en,
+    parse_years_active_start_en,
 )
 
 # --- 実取得した冒頭テキスト (2026-08-08) ---
@@ -106,6 +107,41 @@ class TestParseYearsActiveEn:
         end, ongoing = parse_years_active_en(raw)
         assert end == expected_end
         assert ongoing == expected_ongoing
+
+    @pytest.mark.parametrize(
+        "raw,expected_end,expected_ongoing",
+        [
+            # 🔴 2026-08-09 の実測で見つかった取りこぼし。テンプレートを丸ごと落とすと
+            # '{{Start date|2012}}–2021' が ' –2021' になり、年が 1 つしか残らないため
+            # 終了年なしと誤判定していた。実データの過半がこの書式。
+            ("{{Start date|2012}}–2021", 2021, False),
+            ("{{start date|2017}}–2019", 2019, False),
+            ("{{Start date|2024}}–2026", 2026, False),
+            ("{{Start date|1998}}–2019, 2021–present", None, True),
+            ("{{hlist|{{start date|2008}}–2017|2021–present", None, True),
+            ("{{start date|2013|5|1}}–2015", 2015, False),
+        ],
+    )
+    def test_start_dateテンプレート付きでも終了年が取れる(self, raw, expected_end, expected_ongoing):
+        end, ongoing = parse_years_active_en(raw)
+        assert end == expected_end
+        assert ongoing == expected_ongoing
+
+    @pytest.mark.parametrize(
+        "raw,expected_start",
+        [
+            ("2012–2021", 2012),
+            ("{{Start date|2012}}–2021", 2012),
+            ("{{start date|2017}}–2019", 2017),
+            ("{{hlist|{{start date|2008}}–2017|2021–present", 2008),
+            ("1999–present", 1999),
+            ("{{start date|2013|5|1}}–2015", 2013),
+            ("", None),
+            (None, None),
+        ],
+    )
+    def test_開始年_デビュー代理(self, raw, expected_start):
+        assert parse_years_active_start_en(raw) == expected_start
 
 
 class TestDetectDisbandYear:
