@@ -77,8 +77,15 @@ def clean_value(value):
     v = re.sub(r"<br\s*/?>", "\n", v, flags=re.I)
     # リンクは表示側 (| の後ろ) を残す
     v = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]*)\]\]", r"\1", v)
-    # 箇条書きテンプレートは中身だけ残す
-    v = re.sub(r"\{\{\s*(?:Plainlist|Hlist|Hlist-comma|ublist|unbulleted list)\s*\|", " ", v, flags=re.I)
+    # 箇条書きテンプレートは中身だけ残す。
+    # 🔴 en.wikipedia では flatlist が多数派で、これを落とし忘れると値が
+    # 「flatlist」というテンプレート名に化ける (2026-08-09 に label 側で発覚)。
+    # class= 等の名前付き引数を伴う形 ({{flatlist|class = nowrap|...}}) もある。
+    v = re.sub(r"\{\{\s*(?:Plainlist|Flatlist|Hlist|Hlist-comma|ublist|unbulleted list)\s*\|"
+               r"(?:\s*\w+\s*=\s*[^|}]*\|)*", " ", v, flags=re.I)
+    # {{Ill|Foo|lt=Bar|ko|...}} は言語間リンク。表示名 (lt=) があればそれを、無ければ第 1 引数を残す
+    v = re.sub(r"\{\{\s*Ill\s*\|([^|}]*)\|\s*lt\s*=\s*([^|}]*)[^}]*\}\}", r"\2", v, flags=re.I)
+    v = re.sub(r"\{\{\s*Ill\s*\|([^|}]*)[^}]*\}\}", r"\1", v, flags=re.I)
     # 🔴 {{Start date|2009}} / {{End date|2018}} は年を抱えている。
     # 下の一括除去に任せると年ごと消えるので、先に年だけ取り出す
     # (2026-08-09 に en 側で同じ書式を取りこぼしていたのが判明したため揃えた)。
