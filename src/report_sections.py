@@ -74,9 +74,21 @@ def section_km(panels, times):
     j3 = tabs["jp_ja"].iloc[times.index(3)]
     k3 = tabs["kr_en"].iloc[times.index(3)]
     e3 = tabs["jp_en"].iloc[times.index(3)]
+    # ★ 地の文も計算で出す。差の大きさと信頼区間の重なりを決め打ちで書くと、
+    #   データが動いたときに本文だけ古い主張のまま残る (2026-08-09 に実際に起きた)。
+    gap3 = abs(round(j3["exit"] * 100, 1) - round(k3["exit"] * 100, 1))
+    overlap = min(j3["ci_high"], k3["ci_high"]) - max(j3["ci_low"], k3["ci_low"])
+    if gap3 < 2.0:
+        verdict = "**主分析どうしの 3 年離脱率はほぼ一致**"
+    elif gap3 < 5.0:
+        verdict = "**主分析どうしの 3 年離脱率にはやや差がある**"
+    else:
+        verdict = "**主分析どうしの 3 年離脱率は明確に異なる**"
+    ci_note = ("信頼区間はわずかに重なる" if 0 < overlap * 100 < 1.0
+               else "信頼区間も重なる" if overlap > 0 else "**信頼区間は重ならない**")
     a += [
-        f"- **主分析どうしの 3 年離脱率はほぼ一致**: 日本 {j3['exit']:.1%} vs 韓国 {k3['exit']:.1%} "
-        f"(差 {(j3['exit'] - k3['exit']) * 100:+.1f} pt)・信頼区間も重なる",
+        f"- {verdict}: 日本 {j3['exit']:.1%} vs 韓国 {k3['exit']:.1%} "
+        f"(差 {(j3['exit'] - k3['exit']) * 100:+.1f} pt)・{ci_note}",
         f"- **英語版で揃えると日本が長命に見える**: 日本 {e3['exit']:.1%} vs 韓国 {k3['exit']:.1%} "
         f"(差 {(e3['exit'] - k3['exit']) * 100:+.1f} pt)",
         "",
@@ -215,8 +227,10 @@ def section_sensitivity(panels, times):
     a += ["", f"→ 3 年離脱率は定義によって **{exit3['conservative']:.1%} - {exit3['loose']:.1%}** "
           f"の幅で動く (最大 {span:.1f} pt)。", ""]
     a += ["> ⚠️ **日韓の大小関係は定義に依存する**。韓国側は死亡定義が 1 種類しかなく、"
-          f"内容は日本の厳格定義に近い。厳格どうしなら日本 {exit3['strict']:.1%} vs "
-          f"韓国 {kr3:.1%} でほぼ並ぶが、日本を保守定義にすると "
+          f"内容は日本の厳格定義に近い。厳格どうしでも日本 {exit3['strict']:.1%} vs "
+          f"韓国 {kr3:.1%} で "
+          f"{round(kr3 * 100, 1) - round(exit3['strict'] * 100, 1):.1f} pt の差があるが、"
+          "日本を保守定義にすると "
           f"{exit3['conservative']:.1%} vs {kr3:.1%} で日本が "
           # ★ 差は「表示した値どうしの引き算」で出す。未丸めで引くと 5.56 → 5.6 になり、
           #   本文が並べている 14.6% と 20.1% を読者が引いた 5.5 と合わなくなる
@@ -235,7 +249,7 @@ def section_sensitivity(panels, times):
             t = sa.km_at(sub["duration"], sub["event"], [3])
             cells += [str(len(sub)), f"{t.iloc[0]['exit']:.1%}"]
         a.append(f"| {label} | " + " | ".join(cells) + " |")
-    a += ["", "→ 窓を変えても日韓の 3 年離脱率はほぼ並ぶ。"
+    a += ["", "→ 窓を変えても日韓の大小関係は変わらない (どの窓でも韓国が高い)。"
           "記事化ラグを除く窓 B で両国とも離脱率が上がるのは、"
           "直近コホートの打ち切りが外れるため。", ""]
 
@@ -253,9 +267,10 @@ def section_sensitivity(panels, times):
           f"3 年離脱率の動きは {abs(t_sub.iloc[0]['exit'] - t_all.iloc[0]['exit']) * 100:.1f} pt "
           "にとどまる。", ""]
 
-    a += ["### 6.4 韓国: 死亡と分かるが年が特定できない 46 件", ""]
     kr = panels["kr_en"]
     sub = kr[~kr["death_without_year"]]
+    n_noyear = len(kr) - len(sub)
+    a += [f"### 6.4 韓国: 死亡と分かるが年が特定できない {n_noyear} 件", ""]
     a += ["| 母集団 | n | 3 年 | 5 年 | **7 年ハザード比** | p |", "|---|---|---|---|---|---|"]
     for label, d in [("主分析 (打ち切り扱い)", kr), ("年不明の死亡を除外", sub)]:
         t = sa.km_at(d["duration"], d["event"], [3, 5])
@@ -264,7 +279,7 @@ def section_sensitivity(panels, times):
                  " | ".join(f"{x['exit']:.1%}" for _, x in t.iterrows()) +
                  f" | {r['ratio']:.2f} | {_fmt_p(r['p_value'])} |")
     a += ["", "→ 年不明の死亡を除いても **7 年の超過は残る**。"
-          "この 46 件が 7 年の山を作っているわけではない。", ""]
+          f"この {n_noyear} 件が 7 年の山を作っているわけではない。", ""]
     return a
 
 

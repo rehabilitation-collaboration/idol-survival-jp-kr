@@ -1,6 +1,6 @@
-# Similar Attrition, Different Timing: A Seven-Year Hazard Concentration in Korean but Not Japanese Idol Groups (1996–2025), with a Discrepancy Analysis Against a Published Korean Census
+# Earlier Exit and a Spike at Seven Years: Idol Group Survival in Japan and Korea (1996–2025), with a Discrepancy Analysis Against a Published Korean Census
 
-**Running title:** Exit timing, not attrition level, separates Japanese and Korean idol groups
+**Running title:** Korean idol groups exit earlier and cluster at seven years
 
 ## Authors
 
@@ -14,13 +14,13 @@ Mizuki Shirai^1^
 
 ## Abstract
 
-**Background:** Research on Japanese and Korean idol groups is largely qualitative. Kim (2026) measured Korean idol group survival in a census of 1,182 groups, reporting that about 45% exit within three years of debut; no comparable measurement exists for Japan. The industries differ institutionally: Korea has a government-issued standard exclusive contract built on a seven-year benchmark, promulgated in July 2009; Japan has no instrument limiting contract duration.
+**Background:** Research on Japanese and Korean idol groups is largely qualitative. Kim (2026) measured Korean idol group survival in a census of 1,182 groups, reporting that about 45% exit within three years of debut; no comparable measurement exists for Japan. They also differ institutionally: Korea has a government-issued standard exclusive contract built on a seven-year benchmark, promulgated in July 2009; Japan has no instrument limiting contract duration.
 
-**Methods:** We built group panels from formation- and dissolution-year categories on Japanese-language Wikipedia (Japan, n = 1,346) and from K-pop categories on English-language Wikipedia (Korea, n = 549), for formations in 1996–2025, censored in 2026. Idol status came from a coded rule combining category membership with the article's opening sentence, calibrated on 64 labelled groups. Survival times are integer years, so we estimated Kaplan–Meier attrition, discrete-time hazards, a binomial excess-hazard test at year seven against pooled neighbouring years, and a complementary log-log model with country-specific baselines. A Japanese en.wikipedia panel (n = 304) gave a source-symmetric layer.
+**Methods:** We built group panels from formation-year categories on Japanese-language Wikipedia (Japan, n = 1,346) and from K-pop categories on English-language Wikipedia (Korea, n = 549), for formations in 1996–2025, censored in 2026. Dissolution-year categories assigned events but never defined cohorts. Idol status came from a coded rule combining categories with the article's opening sentence, calibrated on 64 labelled groups. Survival times are integer years, so we estimated Kaplan–Meier attrition, discrete-time hazards, a binomial excess-hazard test at year seven against pooled neighbouring years, and a complementary log-log model with country-specific baselines.
 
-**Results:** Three-year attrition was close (Japan 19.7%, 95% CI 17.7–22.0; Korea 20.1%, 16.9–23.8), without an equivalence test. Timing differed. Korean hazard rose only at year seven (9.5% against a 5.8% neighbour baseline; ratio 1.63, p = 0.016); Japan showed none (7.9% against 8.2%; ratio 0.96, p = 0.642). The Korean excess was 2.72-fold the Japanese (95% CI 1.07–6.88, p = 0.035) and withstood six of seven falsification checks; the seventh, editorial rounding, is untestable. Our Korean panel is 46.4% the size of Kim's census, with a three-year estimate 24.9 points lower.
+**Results:** Korean groups exited earlier at every horizon: three-year attrition 25.0% (95% CI 21.5–28.9) against 19.8% (17.7–22.1), and 52.7% against 43.6% by year seven. Timing differed too. Korean hazard peaked at year seven (14.6% against a 9.1% neighbour baseline; ratio 1.61, p = 0.007); Japan showed none (0.96, p = 0.642). The Korean excess was 2.95-fold the Japanese under country-specific baselines (1.21–7.20, p = 0.018). It withstood six of seven falsification checks, survived re-anchoring on activity-start year (1.54, p = 0.023), and appeared only in cohorts formed from 2009. Our Korean panel is 46.4% the size of Kim's census, with a three-year estimate 20.0 points lower.
 
-**Conclusions:** Three-year attrition was similar across the two industries while exit timing was not, concentration appearing only where a seven-year benchmark exists. Because the clock starts at formation rather than contract signature, and because panel membership is incomplete and partly outcome-dependent, these are provisional statements about timing, not absolute exit rates.
+**Conclusions:** Korean idol groups exited earlier and with a distinct spike at seven years, the latter confined to the industry holding a seven-year contractual benchmark. Incomplete coverage means these are statements about relative timing, not absolute exit rates.
 
 **Keywords:** Survival analysis, discrete-time hazard, idol industry, K-pop, exclusive contracts, cultural industries, Wikipedia as a data source, coverage bias, Japan, South Korea
 
@@ -34,11 +34,11 @@ Despite this scale, the scholarly literature on idols is overwhelmingly interpre
 
 The quantitative music-economics literature does use survival analysis, but at a different unit of analysis. Strobl and Tucker (2000) study chart success dynamics for albums; Bhattacharjee, Gopal, Lertwachara, Marsden and Telang (2007) model album survival on the Billboard charts and the effect of peer-to-peer file sharing; Giles (2007) analyses time spent at number one on the Hot 100; Im, Song and Jung (2018) extend the approach to songs on digital platforms. In each case the object whose lifetime is measured is a *recording*. The organization that produces the recording — the group — is not the unit at risk.
 
-Kim (2026) closed this gap for Korea. Using a full census of 1,182 idol groups that debuted between 1996 and 2025, Kim reports that approximately 45% exit the market within three years of debut, that this corresponds to about 42.9% of the standard seven-year exclusive contract period, and that the first one to three years constitute the critical window for survival and continued agency investment. Kim's design is explicitly mixed-method, combining statistical analysis, cohort analysis, and expert interviews. To our knowledge — searching OpenAlex and CrossRef, which under-index Japanese- and Korean-language journals — no equivalent full-census measurement has been published for Japan, and no study has compared the *shape* of the exit hazard across the two industries.
+Kim (2026) closed this gap for Korea. Using a full census of 1,182 idol groups that debuted between 1996 and 2025, Kim reports that approximately 45% exit the market within three years of debut, that this corresponds to about 42.9% of the standard seven-year exclusive contract period, and that the first one to three years constitute the critical window for survival and continued agency investment. Kim's design is explicitly mixed-method, combining statistical analysis, cohort analysis, and expert interviews. To our knowledge — searching OpenAlex and CrossRef, which under-index Japanese- and Korean-language journals — no equivalent full-census measurement has been published for Japan, and no study has compared the *timing* of the exit hazard across the two industries.
 
 The comparison is motivated by a concrete institutional asymmetry, which we verified against primary government sources rather than inferring from our data. On 6 July 2009 the Korea Fair Trade Commission promulgated two standard exclusive contracts for popular-culture artists: a singer-centred form (standard terms No. 10062) and an actor-centred form (No. 10063). In the singer-centred form that governs idol groups, Article 3(2) did *not* cap the term. It provided that where a contract is set to run beyond seven years, the artist may at any time after seven years have elapsed notify the agency of termination, with the contract ending six months after that notice. The actor-centred form instead capped the term outright at seven years (Article 13(1)). Policy responsibility later moved to the Ministry of Culture, Sports and Tourism, and in the current notice (No. 2024-0021, amended 3 June 2024) both forms carry identical cap language: the term may not exceed seven years, extendable only by written agreement. Japan has no counterpart. The Agency for Cultural Affairs guideline on contractual relations in the arts (adopted 27 July 2022, revised 29 October 2024) asks that exclusivity obligations stay within a "reasonably necessary scope" but sets no numeric ceiling, and the Japan Fair Trade Commission's 2018 report on human capital and competition policy treats entertainment exclusivity case by case — noting, in the opposite direction, that a *jointly* agreed upper or lower bound on contract length among multiple engaging firms could suppress competition for talent.
 
-Korea therefore has a bright-line temporal benchmark at seven years and Japan does not (Table 12). If contractual architecture leaves a mark on organizational survival, that mark should appear as a localized feature of the Korean hazard function at t = 7, not as a difference in overall attrition. We ask three questions. First (**level**), how do Japanese and Korean idol groups compare on cumulative attrition at three, five, seven, and ten years? Second (**shape**), is there an excess exit hazard at exactly seven years, and is it specific to Korea? Third (**method validity**), how much of the Korean industry does a Wikipedia-derived panel actually capture, and in which direction does the resulting bias run? Our answers, in brief: three-year attrition point estimates are nearly the same in the two countries, though we stop short of calling them equivalent; hazard concentration at seven years is present in Korea and absent in Japan, and withstands six of seven pre-planned falsification checks, the seventh being untestable with these data; and our Korean panel is 46.4% the size of Kim's census and yields a three-year estimate 24.9 percentage points lower, a discrepancy we treat as a primary finding rather than a footnote.
+Korea therefore has a bright-line temporal benchmark at seven years and Japan does not (Table 12). If contractual architecture leaves a mark on organizational survival, that mark should appear as a localized feature of the Korean hazard function at t = 7 — a feature distinguishable from any overall difference in how fast groups disappear. We ask three questions. First (**level**), how do Japanese and Korean idol groups compare on cumulative attrition at three, five, seven, and ten years? Second (**timing**), is there an excess exit hazard at exactly seven years, and is it specific to Korea? Third (**method validity**), how does a Wikipedia-derived panel compare with a published census, and in which direction does the resulting bias run? Our answers, in brief: Korean groups exit earlier at every horizon we examine; a hazard spike at seven years is present in Korea, absent in Japan, and robust to six of seven pre-planned falsification checks as well as to re-anchoring the clock on activity-start year; and our Korean panel is 46.4% the size of Kim's census and yields a three-year estimate 20.0 percentage points lower, a discrepancy we treat as a primary finding rather than a footnote.
 
 ## Methods
 
@@ -48,11 +48,15 @@ This is a retrospective observational study of organizational survival using pub
 
 ### Data sources
 
-Group-level records were retrieved through the MediaWiki API from Japanese-language Wikipedia (`ja.wikipedia.org`) and English-language Wikipedia (`en.wikipedia.org`) on 8 August 2026. Three record types were used: category membership, article wikitext (for infobox fields), and the plain-text lead extract (`prop=extracts&exintro=1&explaintext=1`). Certification data for the Japanese hit-structure analysis came from the Recording Industry Association of Japan's Gold Disc certification database via its public JSON endpoints (11,372 certification records covering releases from 1989 onward). Institutional documents were downloaded directly from the issuing agencies: the Korea Fair Trade Commission press release of 6 July 2009 with its two annexed standard contracts, the Ministry of Culture, Sports and Tourism notice No. 2024-0021, the Agency for Cultural Affairs guideline, and the Japan Fair Trade Commission's 2018 report.
+Group-level records were retrieved through the MediaWiki API from Japanese-language Wikipedia (`ja.wikipedia.org`) and English-language Wikipedia (`en.wikipedia.org`) on 8 August 2026. Three record types were used: category membership, article wikitext (for infobox fields), and the plain-text lead extract (`prop=extracts&exintro=1&explaintext=1`). Certification data came from the Recording Industry Association of Japan's Gold Disc certification database via its public JSON endpoints (11,372 certification records covering releases from 1989 onward). Institutional documents were downloaded directly from the issuing agencies: the Korea Fair Trade Commission press release of 6 July 2009 with its two annexed standard contracts, the Ministry of Culture, Sports and Tourism notice No. 2024-0021, the Agency for Cultural Affairs guideline, and the Japan Fair Trade Commission's 2018 report.
 
-### Japanese population
+### Cohort definition, and its separation from event ascertainment
 
-Japanese-language Wikipedia maintains per-year categories for musical groups formed and dissolved in a given year. Taking the union of `Category:YYYY年に結成した音楽グループ` and `Category:YYYY年に解散した音楽グループ` for 1996–2025 yielded 7,376 distinct articles, from which idol groups were identified by the classification rule below, producing the primary Japanese panel of **n = 1,346**.
+This distinction matters enough to state explicitly, because conflating the two would make inclusion depend on the outcome.
+
+Retrieval took the union of `Category:YYYY年に結成した音楽グループ` and `Category:YYYY年に解散した音楽グループ` for 1996–2025, yielding 7,376 distinct articles. **Cohort membership, however, requires a formation-year category inside the observation window.** A group is admitted only if its formation-year category places it in 1996–2025; a dissolution-year category alone never admits a group. Dissolution categories serve solely to assign death years to groups already in the cohort. All three panels are therefore 100% formation-sourced, which we verified directly (Results, *Cohort membership does not depend on the outcome*).
+
+The residual bias runs opposite to outcome-dependent inclusion: idol groups carrying a dissolution-year category but no formation-year category are *excluded* despite being known to have died — 7 such groups in the Japanese panel, 3 in the Korean, and 3 in the English-language Japanese panel. Dropping known deaths depresses measured attrition rather than inflating it.
 
 We did not use Wikidata. Measured coverage of the relevant properties was 12.7–15.7% for inception (P571) and 0.7–1.3% for dissolution (P576): Japanese Wikipedia records these facts in article text and infoboxes without propagating them to Wikidata, so a SPARQL-based extraction would have discarded almost all dissolution events.
 
@@ -85,12 +89,14 @@ This makes the two primary panels source-asymmetric by construction. To bound th
 Japanese Wikipedia distinguishes dissolution (解散), hiatus (活動休止), and indefinite hiatus, and these are not interchangeable, so we implemented three definitions rather than collapsing them:
 
 - **conservative** — dissolution-year category only (486 events, 36.1%);
-- **strict (primary)** — dissolution-year category *or* an end year in the infobox activity-period field (632 events, 47.0%);
-- **loose** — strict plus hiatus statements in the lead with a recoverable year (650 events, 48.3%).
+- **strict (primary)** — dissolution-year category *or* an end year in the infobox activity-period field (633 events, 47.0%);
+- **loose** — strict plus hiatus statements in the lead with a recoverable year (651 events, 48.4%).
 
-The primary definition is justified by a two-source cross-check: of 1,346 groups, 434 had both signals (years agreeing in 417, or 96.1%), **52 were captured only by the category** (infoboxes left stale), and **146 only by the infobox** (category never applied). Either source alone therefore misses real dissolutions. Formation years agreed in 1,204 of 1,251 doubly sourced cases (96.2%). The Korean panel supports only one definition, closest in content to the Japanese strict definition; the lead-sentence tense convention in English (`is a South Korean boy band` versus `was`) supplied 112 of its death years, alongside 154 from categories and 101 from infoboxes.
+The primary definition is justified by a two-source cross-check: of 1,346 groups, 434 had both signals (years agreeing in 417, or 96.1%), **52 were captured only by the category** (infoboxes left stale), and **146 only by the infobox** (category never applied). Either source alone therefore misses real dissolutions. Formation years agreed in 1,204 of 1,251 doubly sourced cases (96.2%). The Korean panel supports only one definition, closest in content to the Japanese strict definition; the lead-sentence tense convention in English (`is a South Korean boy band` versus `was`) supplements categories and infobox years.
 
-Groups without an end year are right-censored, and all groups are administratively censored in 2026. For Korea, 46 groups (8.4%) are identifiably defunct but without a recoverable year; these are censored, which biases Korean survival upward, and we quantify the effect by exclusion.
+Parsing the infobox activity-period field requires care with templates. Values of the form `{{Start date|2012}}–2021` are common, and stripping templates before reading years leaves ` –2021`, which both loses the start year and reduces the value to a single year — below the two-year threshold our end-year rule requires, so the dissolution is silently dropped. We extract years from `{{start date}}` and `{{end date}}` templates before the generic strip, in both the English and Japanese parsers, with regression tests fixing the behaviour. Correcting this raised Korean deaths from 224 to 285 and Japanese deaths from 632 to 633; all figures reported here are post-correction.
+
+Groups without an end year are right-censored, and all groups are administratively censored in 2026. For Korea, 15 groups are identifiably defunct but without a recoverable year; these are censored, which biases Korean survival upward, and we quantify the effect by exclusion.
 
 ### Institutional data
 
@@ -110,9 +116,9 @@ in which the smooth baseline is estimated separately for each country, so a diff
 
 Cox proportional-hazards models use Efron's method for ties, with all durations shifted by +0.5 years to place events at interval midpoints and avoid zero durations. Model A pools the two countries in the source-symmetric English-language layer with country, sex, and cohort. Model B is Japan-only and adds agency size, defined as the number of same-agency groups within the panel. This avoids importing a hand-built agency list, but it carries a defect we flag rather than defend: the count is taken over the whole 30-year window, so a group formed in 2005 is assigned a size that includes labelmates formed in 2018. Information from after baseline thus enters a baseline covariate, and the measure additionally favours agencies that survived long enough to accumulate rosters. A correct construction would count only same-agency groups existing at the index group's formation. Model B is reported for completeness and its agency-size coefficients should not be read as estimates of an agency-size effect. Proportional hazards were tested with Schoenfeld residuals.
 
-Two modelling decisions warrant statement. First, RIAJ certification is **not** used as a covariate: certifications accrue after formation and accumulate with exposure, so conditioning on them induces immortal-time bias. We report certification descriptively only. Second, missing-value indicators (`sex = unknown`, `agency_class = unknown`) are **retained** rather than dropped, because dropping them would systematically remove thin articles and select the panel on notability; their coefficients are consequently uninterpretable and we do not interpret them.
+Two further modelling decisions warrant statement. RIAJ certification is **not** used as a covariate: certifications accrue after formation and accumulate with exposure, so conditioning on them induces immortal-time bias. Missing-value indicators (`sex = unknown`, `agency_class = unknown`) are **retained** rather than dropped, because dropping them would systematically remove thin articles and select the panel on notability; their coefficients are consequently uninterpretable and we do not interpret them.
 
-Analyses used Python 3.14.3 with lifelines 0.30.3, statsmodels 0.14.6, pandas 2.3.3, and matplotlib 3.11.1. The analysis code carries 179 automated tests, including hazard estimates fixed against hand-computable examples and paired checks that a synthetic spike is detected while a spike-free synthetic series is not.
+Analyses used Python 3.14.3 with lifelines 0.30.3, statsmodels 0.14.6, pandas 2.3.3, and matplotlib 3.11.1. The analysis code carries 196 automated tests, including hazard estimates fixed against hand-computable examples, paired checks that a synthetic spike is detected while a spike-free synthetic series is not, and regression tests on the template-parsing defect described above.
 
 ### Ethical considerations
 
@@ -122,61 +128,71 @@ This study analyzes publicly available encyclopedic records about organizations 
 
 ### Study populations
 
-The primary Japanese panel comprises 1,346 groups with 632 observed dissolutions (47.0%) and a Kaplan–Meier median survival of 9.0 years. The Korean panel comprises 549 groups with 224 dissolutions (40.8%) and a median of 12.0 years. The source-symmetric Japanese panel comprises 304 groups with 125 dissolutions (41.1%) and a median of 17.0 years (Table 1).
+The primary Japanese panel comprises 1,346 groups with 633 observed dissolutions (47.0%) and a Kaplan–Meier median survival of 9.0 years. The Korean panel comprises 549 groups with 285 dissolutions (51.9%) and a median of 7.0 years. The source-symmetric Japanese panel comprises 304 groups with 138 dissolutions (45.4%) and a median of 13.0 years (Table 1).
 
 Sex was resolved for 94.5% of the Japanese panel (1,108 female, 150 male, 14 mixed) and 95.8% of the Korean panel (235 female, 275 male, 16 mixed). For the English-language panels, sex was derived from categories with lead-sentence text as a secondary source; where both were available they agreed in 99.6% of 460 Korean cases and 99.4% of 181 Japanese cases.
 
 Cohort sizes grow steeply over the window, from 37 Japanese and 28 Korean groups formed in 1996–2000 to 371 and 133 respectively in 2021–2025 (Table 2). The early sparsity is an artifact of encyclopedic coverage rather than industrial history — Kim's census implies a Korean average of roughly 39 debuts per year across the same period — and the most recent cohorts are additionally affected by article-creation lag.
 
+### Cohort membership does not depend on the outcome
+
+Because inclusion criteria that respond to the outcome would inflate hazard estimates, we verified the separation described in the Methods directly. Of 1,379 Japanese articles passing the idol rule, 1,362 carry a formation-year category and 17 do not; the 1,346-group panel consists entirely of groups whose formation-year category falls in the window. The same holds for the English-language panels: 567 of 615 Korean idol-positive articles carry a formation-year category, as do 343 of 433 Japanese ones, and both panels are drawn only from those. No group enters any panel on the strength of a dissolution category.
+
+The asymmetry that remains points the other way. Seven Japanese idol groups carry a dissolution-year category inside the window but no formation-year category, and are therefore excluded although their death is documented; the corresponding counts are 3 for Korea and 3 for the English-language Japanese panel. Losing known deaths biases attrition downward, not upward, and at 0.2–0.5% of panel size the effect is small.
+
 ### Attrition level
 
-Cumulative attrition runs close between the two primary panels at every horizon we report through ten years (Table 3, Figure 1). Three-year attrition is 19.7% (95% CI 17.7–22.0) in Japan and 20.1% (16.9–23.8) in Korea, a difference of 0.4 percentage points with heavily overlapping intervals. Five-year attrition is 33.0% versus 31.8%, seven-year 43.5% versus 41.6%, and ten-year 53.9% versus 48.4%. The curves separate in the far tail, where the Japanese figure reaches 62.9% at fifteen years against the Korean 51.5%.
+Korean groups exit earlier than Japanese ones at every horizon we report (Table 3, Figure 1). Three-year attrition is 25.0% (95% CI 21.5–28.9) in Korea against 19.8% (17.7–22.1) in Japan, a gap of 5.2 percentage points whose confidence intervals barely overlap. The separation widens with time: 39.0% versus 33.0% at five years, 52.7% versus 43.6% at seven, and 62.1% versus 53.9% at ten. Median survival is 7.0 years in Korea against 9.0 in Japan. Whole-curve log-rank tests separate the two countries on the source-asymmetric primary pair (χ² = 4.67, p = 0.031) and, more strongly, on the source-symmetric layer (χ² = 20.32, p < 0.001) (Table 4).
 
-We describe these as *similar point estimates*, not as evidence of equivalence. No equivalence margin was specified in advance, and overlapping confidence intervals do not establish that two quantities are the same. Whole-curve log-rank tests in fact separate the two countries (below), which is a further reason not to read the three-year agreement as sameness.
-
-The source-symmetric layer tells a different story — 12.0% three-year attrition for Japan against 20.1% for Korea — but this comparison is not interpretable as a national difference, because English-language coverage is itself asymmetric: the English panel captures 22.6% of our Japanese panel but 46.4% of Kim's Korean census. Since notability-selected panels skew long-lived, the more thinly covered Japanese side is the more strongly understated. A log-rank test on this layer returns p = 0.040, and on the source-asymmetric primary pair p = 0.016; we regard neither as evidence about national difference (Table 4).
+The source-symmetric layer inverts the direction — 12.0% three-year attrition for Japan against 25.0% for Korea, a wider gap than the primary comparison — but this is not interpretable as a purer estimate of national difference, because English-language coverage is itself asymmetric: the English panel captures 22.6% of our Japanese panel but 46.4% of Kim's Korean census. Since notability-selected panels skew long-lived, the more thinly covered Japanese side is the more strongly understated. Both comparisons agree on sign, and neither pins down magnitude.
 
 ### Discrepancy against Kim (2026)
 
-Two quantities in Kim (2026) can be set beside ours. Our Korean panel contains 549 groups against Kim's 1,182, so it is **46.4% the size of that census**. On three-year exit we estimate 20.1% against Kim's approximately 45%, a **gap of 24.9 percentage points**. Our project plan specified in advance that a discrepancy exceeding 10 percentage points would elevate the limitations of the Wikipedia approach to a primary finding rather than a caveat, and that threshold was crossed.
+Two quantities in Kim (2026) can be set beside ours. Our Korean panel contains 549 groups against Kim's 1,182, so it is **46.4% the size of that census**. On three-year exit we estimate 25.0% against Kim's approximately 45%, a **gap of 20.0 percentage points**. Our project plan specified in advance that a discrepancy exceeding 10 percentage points would elevate the limitations of the Wikipedia approach to a primary finding rather than a caveat, and that threshold was crossed.
 
-Two things this comparison is *not*. First, it is not a group-level coverage audit. We did not obtain Kim's roster, so we cannot say which groups are missing, and 46.4% is a ratio of panel sizes rather than a measured capture rate; the two populations could in principle overlap less than that ratio suggests. Second, the populations are not defined on the same clock: Kim counts groups that **debuted** in 1996–2025, whereas ours are groups **formed** in that window. Groups formed near the end of the window that had not yet debuted are in our frame and not in Kim's, and trainee periods displace the two definitions by one to two years more generally. The 24.9-point gap therefore cannot be attributed to encyclopedic under-coverage alone — some unknown part of it is definitional. We report the gap as a discrepancy demanding explanation, not as a quantified coverage rate.
+Two things this comparison is *not*. First, it is not a group-level coverage audit. We did not obtain Kim's roster, so we cannot say which groups are missing, and 46.4% is a ratio of panel sizes rather than a measured capture rate. Second, the populations are not defined on the same clock: Kim counts groups that **debuted** in 1996–2025, whereas ours are groups **formed** in that window. The 20.0-point gap therefore cannot be attributed to encyclopedic under-coverage alone — some unknown part of it is definitional. We report the gap as a discrepancy demanding explanation, not as a quantified coverage rate.
 
-Internal evidence establishes the *direction* of the bias even though its magnitude for Japan is unknown. Splitting the Japanese panel into quartiles of article length, three-year attrition falls monotonically from 36.8% in the shortest quartile (median 4,295 bytes) to 3.0% in the longest (median 57,526 bytes). Groups with any RIAJ certification show 8.7% three-year attrition against 20.7% for the rest. Two independent proxies for prominence thus point the same way: less prominent groups are shorter-lived, so a panel restricted to groups notable enough to have an article systematically understates attrition. That the shortest-article quartile (36.8%) approaches Kim's 45% is consistent with this reading. We stress that article length is a proxy for prominence and cannot exclude reverse causation, in which longer-lived groups accumulate longer articles; this is evidence on direction, not an estimate of coverage.
+Internal evidence establishes the *direction* of the bias even though its magnitude for Japan is unknown. Splitting the Japanese panel into quartiles of article length, three-year attrition falls monotonically from 36.8% in the shortest quartile (median 4,295 bytes) to 3.0% in the longest (median 57,526 bytes). Groups with any RIAJ certification show 8.7% three-year attrition against 20.7% for the rest. Two independent proxies for prominence thus point the same way: less prominent groups are shorter-lived, so a panel restricted to groups notable enough to have an article systematically understates attrition. That the shortest-article quartile (36.8%) approaches Kim's 45% is consistent with this reading. We stress that article length is a proxy for prominence and cannot exclude reverse causation, in which longer-lived groups accumulate longer articles.
 
-### The seven-year hazard concentration
+### The seven-year hazard spike
 
-Discrete-time hazards diverge in shape (Table 5, Figure 2). The Japanese hazard rises gradually to a peak of 9.0% at t = 5 and declines thereafter, with t = 7 at 7.9% (43/546) entirely unremarkable relative to its neighbours. The Korean hazard runs at or below the Japanese level through t = 6 (5.4%), jumps to **9.5% at t = 7** (23/243), and falls to 4.4% at t = 8.
+Discrete-time hazards differ in shape as well as level (Table 5, Figure 2). The Japanese hazard rises gradually to a peak of 9.0% at t = 5 and declines thereafter, with t = 7 at 7.9% (43/546) unremarkable relative to its neighbours. The Korean hazard runs at 9–10% through t = 6 (9.3%), jumps to **14.6% at t = 7** (30/206), and falls back to 9.1% at t = 8.
 
-Against a baseline pooled from t ∈ {5, 6, 8, 9}, the Korean hazard at t = 7 is 1.63 times expectation (baseline 5.8%, one-sided p = 0.016). The corresponding Japanese ratio is 0.96 (baseline 8.2%, p = 0.642), and the source-symmetric Japanese ratio is 0.76 (p = 0.821) (Table 6). The excess is present only where the seven-year contractual benchmark exists.
+Against a baseline pooled from t ∈ {5, 6, 8, 9}, the Korean hazard at t = 7 is 1.61 times expectation (baseline 9.1%, one-sided p = 0.007). The corresponding Japanese ratio is 0.96 (baseline 8.2%, p = 0.642), and the source-symmetric Japanese ratio is 0.67 (p = 0.901) (Table 6). The spike is present only where the seven-year contractual benchmark exists.
 
 ### Falsification checks
 
 Because a single significant test at a single year invites several competing explanations, we planned seven checks (Table 7).
 
 1. **Was t = 7 simply the lucky year?** Repeating the identical test at every year t = 2…12 yields exactly one significant year in Korea — t = 7 — which also carries the largest hazard ratio of the eleven. In Japan no year is significant, and t = 7 ranks ninth of eleven.
-2. **Is it a calendar-year shock?** The 23 Korean deaths at t = 7 are spread across dissolution years 2014–2026, the modal year contributing three (13.0%). Deleting that modal year entirely leaves the excess intact (ratio 1.53, p = 0.041).
-3. **Is it a parser artifact?** The share of deaths occurring at t = 7 is 11.0% for category-derived years, 7.5% for infobox-derived years, and 11.8% for lead-derived years — comparable across all three sources.
-4. **Does it depend on the neighbourhood?** Four alternative baselines give ratios of 1.48–1.90, all with p < 0.05.
+2. **Is it a calendar-year shock?** The 30 Korean deaths at t = 7 are spread across dissolution years 2014–2026, the modal year contributing four (13.3%). Deleting that modal year entirely leaves the excess intact (ratio 1.55, p = 0.018).
+3. **Is it a parser artifact?** The share of deaths occurring at t = 7 is 11.0% for category-derived years and 9.4% for infobox-derived years, comparable across the two substantial sources; the lead-text source contributes only 3 deaths in total and is too small to compare.
+4. **Does it depend on the neighbourhood?** Four alternative baselines give ratios of 1.58–1.65, all with p ≤ 0.008.
 5. **Does the Japanese null depend on the death definition?** Ratios are 1.02, 0.96, and 0.93 under conservative, strict, and loose definitions (all non-significant). No definition produces a Japanese spike.
-6. **Is it cohort-dependent?** Splitting Korea at 2009 — the year the standard contract was promulgated — the excess is confined to groups formed in 2009–2025 (n = 465; ratio 2.09, p < 0.001) and absent among those formed in 1996–2008 (n = 84; ratio 0.28). The early cohort has only 54 groups in the t = 7 risk set, so this is weak evidence of absence, and we do not treat it as establishing a date of onset.
+6. **Is it cohort-dependent?** Splitting Korea at 2009 — the year the standard contract was promulgated — the excess is confined to groups formed in 2009–2025 (n = 465; ratio 1.92, p < 0.001) and absent among those formed in 1996–2008 (n = 84; ratio 0.28). The early cohort has only 54 groups in the t = 7 risk set, so this is weak evidence of absence, and we do not treat it as establishing a date of onset.
 7. **Could editors be rounding dissolution years toward the contract narrative?** This we cannot exclude, and it is carried into Limitations.
+
+### The formation clock tracks the debut clock
+
+A seven-year contract begins at signature, not at formation, so a spike at seven years since *formation* would be poor evidence for a contract mechanism if the two clocks diverged. They do not. Using the infobox activity-start year as a debut proxy — available for 88.9% of the Korean panel — the activity-start year equals the formation-year category in **96.1%** of cases, with no group starting two or more years later.
+
+Re-anchoring the analysis on activity-start year preserves the result. Within the 488 Korean groups having both clocks, the excess is 1.67 (p = 0.008) on the formation clock and **1.54 (p = 0.023) on the activity-start clock**. Japanese ratios stay near unity on both (0.72 and 0.72). The spike is therefore not an artifact of anchoring at formation.
 
 ### Model-based confirmation
 
-The complementary log-log model, fitted to 7,199 person-period rows from the 853 groups of the source-symmetric layer, reproduces the result with country-specific smooth baselines. The interaction of the t = 7 indicator with Korea is +1.000 on the log-hazard scale, a hazard ratio of **2.72 (95% CI 1.07–6.88, p = 0.035)**, while the corresponding Japanese term is 0.65 (0.30–1.44, p = 0.291). Fitted separately, the Korean panel gives 1.78 (1.09–2.90, p = 0.021) and the Japanese primary panel 0.93 (0.67–1.29, p = 0.650) (Table 8). Both the model-free and model-based routes therefore agree.
+The complementary log-log model, fitted to 6,783 person-period rows from the 853 groups of the source-symmetric layer, reproduces the result with country-specific smooth baselines. The interaction of the t = 7 indicator with Korea is +1.082 on the log-hazard scale, a hazard ratio of **2.95 (95% CI 1.21–7.20, p = 0.018)**, while the corresponding Japanese term is 0.58 (0.27–1.28, p = 0.179). Fitted separately, the Korean panel gives 1.72 (1.13–2.64, p = 0.012) and the Japanese primary panel 0.93 (0.67–1.29, p = 0.651) (Table 8). Both the model-free and model-based routes therefore agree.
 
 ### Cox models
 
-In the pooled source-symmetric model (n = 853, 349 events, concordance 0.597), Korea carries a hazard ratio of 1.55 (1.23–1.96, p < 0.001) and male groups 0.50 (0.40–0.64, p < 0.001) relative to female, the latter visible as a separation of the sex-specific curves in both countries (Figure 3); cohort terms are individually non-significant. Schoenfeld residuals do not reject proportionality for any covariate (Table 9).
+In the pooled source-symmetric model (n = 853, 423 events, concordance 0.619), Korea carries a hazard ratio of 1.95 (1.57–2.42, p < 0.001) and male groups 0.55 (0.44–0.68, p < 0.001) relative to female, the latter visible as a separation of the sex-specific curves in both countries (Figure 3); cohort terms are individually non-significant. Schoenfeld residuals reject proportionality for `sex[M]` (χ² = 4.11, p = 0.043), so that coefficient is a period average rather than a constant ratio (Table 9).
 
-In the Japan-only model with agency size (n = 1,346, 632 events, concordance 0.570), male groups again show lower hazard (0.62, 0.47–0.83, p = 0.001). The agency-size pattern is **not monotonic**: relative to single-group agencies, agencies with 2–4 groups show a lower hazard (0.79, 0.63–0.98, p = 0.033) while those with 10 or more show a point estimate above one that does not reach significance (1.23, 0.96–1.57, p = 0.099), and the 5–9 band sits between at 1.10 (Table 10). We report this without interpreting it. As noted in the Methods, agency size is counted over the full window and therefore encodes post-baseline information, so these coefficients confound whatever agency size does with the fact that larger counts accrue to agencies that lasted. Proportionality is additionally rejected for `agency_class[unknown]` and for two cohort terms, so the remaining hazard ratios should be read as period-averaged; the time-resolved structure is the discrete-time hazard reported above.
+In the Japan-only model with agency size (n = 1,346, 633 events, concordance 0.568), male groups again show lower hazard (0.63, 0.47–0.84, p = 0.001). The agency-size pattern is **not monotonic**: relative to single-group agencies, agencies with 2–4 groups show a lower hazard (0.79, 0.64–0.99, p = 0.040) while those with 10 or more show a point estimate above one that does not reach significance (1.23, 0.96–1.56, p = 0.102) (Table 10). We report this without interpreting it: as noted in the Methods, agency size is counted over the full window and therefore encodes post-baseline information, so these coefficients confound whatever agency size does with the fact that larger counts accrue to agencies that lasted. Proportionality is additionally rejected for `agency_class[unknown]` and for two cohort terms.
 
 ### Sensitivity analyses
 
-Conclusions are stable across every variation we ran (Table 11). Narrowing the window to 2009–2025 or to 1996–2022 moves Japanese three-year attrition between 19.4% and 20.6% and the Korean between 20.1% and 21.3%. Dropping the 112 definition-sensitive Japanese groups (8.3% of the panel) shifts three-year attrition by 0.5 points. Excluding the 46 Korean groups that are defunct without a recoverable year raises Korean three-year attrition from 20.1% to 22.0% and leaves the seven-year excess essentially unchanged (ratio 1.64, p = 0.014).
+The direction of the country difference and the seven-year spike are stable across every variation we ran (Table 11). Narrowing the window to 2009–2025 or to 1996–2022 moves Japanese three-year attrition between 19.5% and 20.6% and the Korean between 25.0% and 26.9%; Korea is higher in every window. Dropping the 112 definition-sensitive Japanese groups (8.3% of the panel) shifts Japanese three-year attrition by 0.5 points. Excluding the 15 Korean groups that are defunct without a recoverable year raises Korean three-year attrition from 25.0% to 25.7% and leaves the seven-year excess unchanged (ratio 1.61, p = 0.006).
 
-The death definition does move the level materially, and this deserves emphasis: Japanese three-year attrition ranges from 14.6% (conservative) through 19.7% (strict) to 20.6% (loose). Because the Korean panel admits only one definition, comparing a conservatively defined Japan against Korea would manufacture a 5.5-point gap where the like-for-like comparison shows none. **Cross-country comparison is only meaningful under matched definitions.**
+The death definition moves the Japanese level materially, and this deserves emphasis: Japanese three-year attrition ranges from 14.6% (conservative) through 19.8% (strict) to 20.7% (loose). Because the Korean panel admits only one definition, comparing a conservatively defined Japan against Korea would widen the gap to 10.4 points, roughly double the like-for-like figure. **Cross-country comparison is only meaningful under matched definitions.**
 
 ### Certification data, and why no hit structure is reported
 
@@ -184,31 +200,31 @@ Of the 1,346 Japanese groups, 105 (7.8%) hold at least one RIAJ certification. W
 
 ## Discussion
 
-### Level and shape are separate questions
+### Two findings, not one
 
-The headline result is a dissociation. On the question the existing literature poses — what fraction of groups exit early — Japan and Korea land in nearly the same place, with three-year attrition of 19.7% and 20.1% and confidence intervals that overlap almost entirely. We are careful not to call this equivalence: no equivalence margin was pre-specified, and the whole-curve log-rank tests separate the two countries even though the three-year points nearly coincide. Had we stopped at the level, though, the natural reading would have been that two industries with visibly different contractual and developmental regimes nonetheless produce much the same survival outcome.
+Korean idol groups exit earlier than Japanese ones — 25.0% against 19.8% at three years, widening to 52.7% against 43.6% by year seven — and their exit hazard carries a local spike at exactly seven years that has no Japanese counterpart. These are separate claims resting on different evidence, and it is worth keeping them apart. The level difference is a comparison of two panels built from different encyclopedias, and is therefore exposed to every asymmetry in how the two language communities document their idol industries. The timing result is a within-country statement — Korea's year seven against Korea's own neighbouring years — and is immune to that particular objection, which is why we treat it as the more secure of the two.
 
-The hazard function tells a different story. Korea's exit risk is flat-to-declining through year six, spikes at year seven, and falls again; Japan's is a smooth hump peaking at year five with nothing distinctive at seven. Aggregate attrition curves hide this because a single-year excess of a few percentage points contributes little to a cumulative total. The practical implication is methodological: in industries organized around contractual periods, the timing of exit may carry information that the level does not.
+An earlier version of this analysis reported the two national levels as nearly identical. That reading was an artifact of a template-parsing defect that silently discarded Korean dissolutions recorded as `{{Start date|YYYY}}–YYYY`; correcting it moved Korean deaths from 224 to 285 and Korean three-year attrition from 20.1% to 25.0%. We record this because the corrected figure sits closer to Kim's census value, and because the direction of a measurement error is rarely visible without an external benchmark to check against.
 
 ### The institutional reading, and what it cannot establish
 
-The seven-year concentration coincides with the only fixed temporal benchmark in either industry, and the mechanism implied by the 2009 text is a good fit for what we observe. The singer-centred contract did not terminate relationships at seven years; it gave the artist a *right to exit* once seven years had elapsed. An option creates a spike without emptying the risk set, which is what the data show: hazard at t = 7 rises to 9.5%, not to some far larger value. A hard cap would predict a much more violent depletion.
+The seven-year spike coincides with the only fixed temporal benchmark in either industry, and the mechanism implied by the 2009 text fits what we observe. The singer-centred contract did not terminate relationships at seven years; it gave the artist a *right to exit* once seven years had elapsed. An option creates a spike without emptying the risk set, which is what the data show: hazard at t = 7 rises to 14.6%, not to some far larger value. A hard cap would predict a much more violent depletion.
 
-The cohort split is consistent with this reading — the excess appears among groups formed from 2009 onward and not before — and 2009 is the promulgation year. We are deliberately restrained about this coincidence. The pre-2009 cohort contributes only 54 groups to the relevant risk set, so its null is weak evidence; our design is not a difference-in-differences exploiting the reform; and we cannot observe which contract any individual group actually signed. The alignment is a consistency check, not identification.
+Two objections that would have been fatal do not hold. The spike is not an artifact of measuring time from formation: Korean formation years coincide with activity-start years in 96.1% of cases, and re-anchoring on the activity-start clock leaves the excess intact (1.54, p = 0.023). Nor does it arise from an inclusion rule that responds to the outcome: cohorts are defined by formation categories alone, and the residual selection drops known deaths rather than adding them.
 
-Two further cautions belong here. The termination right takes effect six months after notice, so the true exit point lies somewhat beyond seven years — a displacement our year-granular, formation-anchored clock cannot resolve. And the clock itself starts at formation, not at contract signature or debut; trainee periods of one to two years are absorbed invisibly.
+The cohort split is consistent with the institutional reading — the excess appears among groups formed from 2009 onward and not before — and 2009 is the promulgation year. We are deliberately restrained about this coincidence. The pre-2009 cohort contributes only 54 groups to the relevant risk set, so its null is weak evidence; our design is not a difference-in-differences exploiting the reform; and we cannot observe which contract any individual group actually signed. The alignment is a consistency check, not identification. The termination right also takes effect six months after notice, so the true exit point lies somewhat beyond seven years — a displacement our year-granular clock cannot resolve.
 
 ### The coverage shortfall is a finding, not a caveat
 
-Our Korean panel recovers 46.4% of Kim's census and understates three-year exit by 24.9 percentage points. We think this deserves to be reported as a result. Encyclopedic sources are increasingly used as ready-made population frames for cultural industries, and the size of this gap indicates how much can be missed. The internal gradient — three-year attrition falling from 36.8% in the shortest-article quartile to 3.0% in the longest — identifies the mechanism: obscure, short-lived groups are exactly those least likely to be written about.
+Our Korean panel is 46.4% the size of Kim's census and understates three-year exit by 20.0 points. We think this deserves to be reported as a result. Encyclopedic sources are increasingly used as ready-made population frames for cultural industries, and the size of this gap indicates how much can be missed. The internal gradient — three-year attrition falling from 36.8% in the shortest-article quartile to 3.0% in the longest — identifies the mechanism: obscure, short-lived groups are exactly those least likely to be written about.
 
-There is an irony worth recording. We evaluated several commercial talent databases and rejected them for this purpose. One directory covering 2,981 groups carried dissolution information for only 88 of them (3%); paid casting databases are screen-only and do not document whether defunct groups are retained. Commercial catalogues exist to market currently active talent, so they have no incentive to preserve the dead. For measuring organizational mortality, the volunteer encyclopedia is the more complete record — while still, as our own validation shows, missing more than half the population.
+There is an irony worth recording. We evaluated several commercial talent databases and rejected them for this purpose. One directory covering 2,981 groups carried dissolution information for only 88 of them (3%); paid casting databases are screen-only and do not document whether defunct groups are retained. Commercial catalogues exist to market currently active talent, so they have no incentive to preserve the dead. For measuring organizational mortality, the volunteer encyclopedia is the more complete record — while still, as our own comparison shows, roughly half the size of a purpose-built census.
 
-Does this bias also distort the *shape* of the hazard, and not only its level? Under-coverage of short-lived groups attenuates measured attrition, and the most obvious version of the mechanism gives no reason for missing groups to have exited disproportionately in their seventh year in Korea specifically. But we cannot rule the possibility out. Whether a group has an article at all, how long that article is, and whether a dissolution year is recorded may each depend on why and when the group ended — and a dissolution that observers can narrate as "the seven-year contract ran out" is exactly the kind that gets written down. That is the same mechanism as the editorial-rounding check we could not close (Table 7, row 7), reappearing at the level of article existence rather than of year assignment. Since we could not compare our curve shape against Kim's, selection on shape remains an open possibility rather than an excluded one.
+Does this bias also distort the shape of the hazard, and not only its level? Under-coverage of short-lived groups attenuates measured attrition, and the most obvious version of the mechanism gives no reason for missing groups to have exited disproportionately in their seventh year in Korea specifically. But we cannot rule the possibility out. Whether a group has an article at all, how long that article is, and whether a dissolution year is recorded may each depend on why and when the group ended — and a dissolution that observers can narrate as "the seven-year contract ran out" is exactly the kind that gets written down. That is the same mechanism as the editorial-rounding check we could not close (Table 7, row 7), reappearing at the level of article existence rather than of year assignment.
 
 ### Sex differences run opposite to the recording-level literature
 
-Male groups show lower hazard in both countries (0.50 pooled, 0.62 in Japan). This inverts the pattern in the recording-level survival literature, where Bhattacharjee et al. (2007) report enhanced chart survival for female artists and Giles (2007) finds longer stays at number one for female solo performers. The unit of analysis differs — chart tenure of a release versus organizational lifetime of a group — so the two are not in direct contradiction, but the reversal is sharp enough to be worth flagging: what makes a record persist on a chart and what makes a group persist as a going concern are evidently not the same thing.
+Male groups show lower hazard in both countries (0.55 pooled, 0.63 in Japan). This inverts the pattern in the recording-level survival literature, where Bhattacharjee et al. (2007) report enhanced chart survival for female artists and Giles (2007) finds longer stays at number one for female solo performers. The unit of analysis differs — chart tenure of a release versus organizational lifetime of a group — so the two are not in direct contradiction, but the reversal is sharp enough to be worth flagging: what makes a record persist on a chart and what makes a group persist as a going concern are evidently not the same thing.
 
 ### Agency size does not act monotonically
 
@@ -216,23 +232,23 @@ Mid-sized agencies (2–4 groups in the panel) show the lowest hazard, while the
 
 ## Limitations
 
-1. **★ Panel membership is partly outcome-dependent.** The Japanese frame is the union of the formation-year and dissolution-year categories, and the Korean frame likewise unions "established in" with "disestablished in" categories. A group whose formation year was never categorized still enters the panel if it dissolves and receives a dissolution-year category, whereas an equivalent group that is still active does not. Experiencing the event therefore raises the probability of inclusion. This is the most serious threat to the analysis: it can inflate observed hazard generally, and it could in principle do so unevenly across years if dissolutions of particular kinds are more likely to be categorized. We adopted the union because either category alone misses real dissolutions (52 and 146 cases respectively), but that argument concerns event *ascertainment*, not cohort *definition*, and the two should have been separated. The necessary sensitivity analysis — building cohorts from formation categories alone and using dissolution categories only to assign events — is not reported here and is the first thing we would add.
+1. **Coverage is incomplete, and the comparison with Kim (2026) is a discrepancy rather than a validation.** Our Korean panel is 46.4% the size of Kim's census and gives a three-year estimate 20.0 percentage points lower, but we did not obtain Kim's roster, so no group-level capture rate was measured. The two frames are also defined differently — Kim counts debuts, we count formations — so an unknown share of the gap is definitional. Only two quantities were comparable at all; mean duration, sex-specific figures, and curve shape were not, and Kim's mixed-method design includes expert interviews that a quantitative replication does not reproduce. For Japan no external benchmark exists, so Japanese coverage is entirely unquantified, and the cross-national level comparison inherits that uncertainty.
 
-2. **Coverage is incomplete, and the comparison with Kim (2026) is a discrepancy rather than a validation.** Our Korean panel is 46.4% the size of Kim's census and gives a three-year estimate 24.9 percentage points lower, but we did not obtain Kim's roster, so no group-level capture rate was measured. The two frames are also defined differently — Kim counts debuts, we count formations — so an unknown share of the gap is definitional rather than a coverage shortfall. Only two quantities were comparable at all; mean duration, sex-specific figures, and curve shape were not, and Kim's mixed-method design includes expert interviews that a quantitative replication does not reproduce. For Japan no external benchmark exists, so Japanese coverage is entirely unquantified. The internal quartile gradient (36.8% to 3.0%) indicates the direction of the bias without estimating its size, and reverse causation — longer-lived groups accumulating longer articles — cannot be excluded.
+2. **Dissolution years may be rounded toward the contract narrative.** If editors record ambiguous endings as coinciding with a well-known seven-year contract term, the spike could be partly an artifact of documentation rather than of behaviour. Our data cannot separate these, and doing so would require records of actual contract expiry dates. The same mechanism could operate on article existence rather than year assignment, which would touch the hazard shape and not only its level.
 
-3. **Dissolution years may be rounded toward the contract narrative.** If editors record ambiguous endings as coinciding with a well-known seven-year contract term, the spike could be partly an artifact of documentation rather than of behaviour. Our data cannot separate these, and doing so would require records of actual contract expiry dates.
+3. **The clock is coarse.** Survival times are integer years, so same-year events have duration zero and the six-month notice period in the Korean termination right is below resolution. The formation anchor itself is defensible — formation and activity-start years coincide in 96.1% of Korean cases, and the result survives re-anchoring — but sub-annual timing is simply unavailable.
 
-4. **★ The clock is coarse and anchored at formation, which bears directly on the central claim.** Survival times are integer years derived from formation and dissolution years, so same-year events have duration zero and the six-month notice period in the Korean termination right is below resolution. More importantly, formation is neither contract signature nor debut, and trainee periods of one to two years are unmodelled. If the seven-year clause is what produces the spike, the spike should sit seven years after the contract began — which, on a formation-anchored axis, would be expected at year eight or nine rather than at year seven. That a peak appears at exactly seven years since *formation* is therefore not direct evidence for the contract mechanism, and could even be read against it. Re-estimating the Korean panel on a debut-anchored clock is the single most informative additional analysis available, and we have not done it.
+4. **The institutional alignment is not causal identification, and the model specification is not exhaustive.** The onset of the excess in post-2009 cohorts matches the promulgation year, but the pre-2009 cohort is small (54 groups at risk at t = 7), no difference-in-differences design was used, and individual groups' contracts are unobserved. We could not date the revision of the singer-centred form from a termination right to an outright cap, so the institutional description rests on two verified time points. On the statistical side, the neighbour-baseline test estimates its baseline from adjacent years and is anti-conservative; the corroborating model uses a single functional form for the baseline (a cubic polynomial), where splines, quadratics, or year dummies would test whether the year-seven term is an artifact of that choice; and all models treat groups as independent, although groups sharing an agency plainly are not — agency-clustered standard errors, a shared frailty, or leave-one-agency-out re-estimation would all be appropriate and none were run.
 
-5. **The institutional alignment is not causal identification, and the model specification is not exhaustive.** The onset of the excess in post-2009 cohorts matches the promulgation year, but the pre-2009 cohort is small (54 groups at risk at t = 7), no difference-in-differences design was used, and individual groups' contracts are unobserved. We also could not date the revision of the singer-centred form from a termination right to an outright cap, so the institutional description rests on two verified time points rather than a continuous history. On the statistical side, the neighbour-baseline test estimates its baseline from adjacent years and is anti-conservative; the corroborating model uses a single functional form for the baseline (a cubic polynomial), where splines, quadratics, or year dummies would test whether the year-seven term is an artifact of that choice; and all models treat groups as independent, although groups sharing an agency plainly are not — agency-clustered standard errors, a shared frailty, or leave-one-agency-out re-estimation would all be appropriate and none were run.
+5. **Idol classification is validated on recall but not on precision.** The adopted rule recovers 96.2% of a 64-group ground truth, but that ground truth is 52 uncontroversial positives plus 12 boundary cases and contains no sample of clear negatives, so specificity and positive predictive value are unmeasured. The C3 signal in particular ("dance and vocal", "performance group") could admit non-idol acts. Establishing precision would require blind coding of a random sample of candidate articles, which we did not do, and the seven-year result has not been re-estimated under alternative classifier settings. Ground truth was assembled by the author, and 8.3% of the Japanese panel is definition-sensitive — although removing that portion moves three-year attrition by only 0.5 points.
 
-6. **Idol classification is validated on recall but not on precision.** The adopted rule recovers 96.2% of a 64-group ground truth, but that ground truth is 52 uncontroversial positives plus 12 boundary cases and contains no sample of clear negatives, so specificity and positive predictive value are unmeasured. The C3 signal in particular ("dance and vocal", "performance group") could admit non-idol acts. Establishing precision would require blind coding of a random sample of candidate articles, which we did not do, and the seven-year result has not been re-estimated under alternative classifier settings. Ground truth was assembled by the author, the boundary between idol and adjacent formats is genuinely contested, and 8.3% of the Japanese panel is definition-sensitive — although removing that portion moves three-year attrition by only 0.5 points. Panel construction also differs by country by necessity, since Korean-language Wikipedia has no per-year categories.
+6. **Panel construction differs by country by necessity.** Korean-language Wikipedia has no per-year categories, so the Korean panel is built from English-language Wikipedia while the Japanese primary panel is built from Japanese-language Wikipedia. The source-symmetric layer bounds this but does not remove it, since English-language coverage of the two industries is itself unequal (22.6% of our Japanese panel against 46.4% of Kim's Korean census). Level comparisons between countries should be read with this asymmetry in mind; the seven-year result, being a within-country comparison, is not exposed to it.
 
 7. **The prior literature was verified bibliographically, not read in full.** Citations were checked against OpenAlex and CrossRef and, for nine of eleven works, against retrieved abstracts; none were read in full text. We accordingly cite them for disciplinary positioning rather than as methodological warrants. The search covered OpenAlex and CrossRef, which under-index Japanese- and Korean-language journals, so our claim that no comparable Japanese census exists is a statement about the databases searched.
 
 ## Conclusion
 
-Across 1,346 Japanese and 549 Korean idol groups formed between 1996 and 2025, three-year attrition landed in nearly the same place in the two industries — 19.7% versus 20.1%, with overlapping confidence intervals, though we did not test for equivalence — while the timing of exit did not. Korean exit hazard was concentrated at seven years since formation (9.5% against a 5.8% neighbour baseline; ratio 1.63, p = 0.016; 2.72-fold the Japanese excess in a model with country-specific baselines, p = 0.035), whereas Japan showed no such feature under any death definition. The concentration appears only in the industry that has a seven-year contractual benchmark, and only among cohorts formed after that benchmark was promulgated in July 2009 — an alignment we report as consistent with an institutional reading without claiming to have identified it causally, and one that is weakened by the fact that our clock starts at formation rather than at contract signature. Separately, comparing our Korean panel with a published census showed that it is 46.4% the size of that census and gives a three-year estimate 24.9 percentage points lower. Those two facts set the terms on which these results should be used: as provisional evidence about the timing of the exit hazard, not about the absolute rate at which idol groups disappear.
+Across 1,346 Japanese and 549 Korean idol groups formed between 1996 and 2025, Korean groups exited earlier at every horizon — 25.0% against 19.8% at three years, 52.7% against 43.6% at seven — and their exit hazard carried a spike at seven years that Japan did not show (14.6% against a 9.1% neighbour baseline; ratio 1.61, p = 0.007; 2.95-fold the Japanese excess under country-specific baselines, p = 0.018). The spike withstood six of seven falsification checks, survived re-anchoring the clock from formation to activity-start year, and appeared only among cohorts formed after Korea's standard exclusive contract was promulgated in July 2009 — an alignment we report as consistent with an institutional reading without claiming to have identified it causally. Because cohorts are defined by formation categories alone, the result does not rest on an inclusion rule that responds to the outcome. Set against that, our Korean panel is 46.4% the size of a published census and gives a three-year estimate 20.0 points lower, and the two national panels are drawn from different encyclopedias. The timing result — a within-country comparison — is the firmer of our two findings; the level difference should be read as directional rather than as a measurement of how fast idol groups actually disappear.
 
 ## References
 
@@ -296,9 +312,9 @@ All analysis code, the classification rules, the falsification-check implementat
 
 | Panel | n | Deaths | Censored | Death rate | Median survival (KM) |
 |---|---|---|---|---|---|
-| Japan, ja.wikipedia (primary) | 1,346 | 632 | 714 | 47.0% | 9.0 years |
-| Korea, en.wikipedia (primary) | 549 | 224 | 325 | 40.8% | 12.0 years |
-| Japan, en.wikipedia (symmetric) | 304 | 125 | 179 | 41.1% | 17.0 years |
+| Japan, ja.wikipedia (primary) | 1,346 | 633 | 713 | 47.0% | 9.0 years |
+| Korea, en.wikipedia (primary) | 549 | 285 | 264 | 51.9% | 7.0 years |
+| Japan, en.wikipedia (symmetric) | 304 | 138 | 166 | 45.4% | 13.0 years |
 
 ### Table 2. Cohort sizes by formation period, n (deaths)
 
@@ -306,130 +322,131 @@ All analysis code, the classification rules, the falsification-check implementat
 |---|---|---|
 | 1996–2000 | 37 (27) | 28 (15) |
 | 2001–2005 | 51 (33) | 28 (15) |
-| 2006–2010 | 122 (73) | 57 (29) |
-| 2011–2015 | 349 (206) | 141 (78) |
-| 2016–2020 | 416 (217) | 162 (68) |
-| 2021–2025 | 371 (76) | 133 (19) |
+| 2006–2010 | 122 (73) | 57 (34) |
+| 2011–2015 | 349 (206) | 141 (103) |
+| 2016–2020 | 416 (217) | 162 (94) |
+| 2021–2025 | 371 (77) | 133 (24) |
 
 ### Table 3. Cumulative attrition, 1 − S(t), with 95% confidence intervals
 
 | Elapsed years | Japan (primary) | Korea (primary) | Japan (symmetric) |
 |---|---|---|---|
-| 1 | 6.8% (5.5–8.2) | 6.4% (4.6–8.8) | 3.9% (2.3–6.8) |
-| 2 | 13.1% (11.3–15.0) | 13.1% (10.5–16.2) | 7.9% (5.4–11.6) |
-| 3 | 19.7% (17.7–22.0) | 20.1% (16.9–23.8) | 12.0% (8.8–16.3) |
-| 5 | 33.0% (30.4–35.7) | 31.8% (27.9–36.2) | 22.3% (17.9–27.5) |
-| 7 | 43.5% (40.6–46.6) | 41.6% (37.2–46.3) | 28.1% (23.2–33.8) |
-| 10 | 53.9% (50.7–57.1) | 48.4% (43.6–53.3) | 37.2% (31.6–43.4) |
-| 15 | 62.9% (59.3–66.4) | 51.5% (46.4–56.8) | 47.9% (41.5–54.7) |
+| 1 | 6.8% (5.5–8.2) | 7.3% (5.4–9.8) | 3.9% (2.3–6.8) |
+| 2 | 13.1% (11.4–15.1) | 16.1% (13.2–19.5) | 7.9% (5.4–11.6) |
+| 3 | 19.8% (17.7–22.1) | 25.0% (21.5–28.9) | 12.0% (8.8–16.3) |
+| 5 | 33.0% (30.4–35.8) | 39.0% (34.8–43.5) | 23.7% (19.2–29.1) |
+| 7 | 43.6% (40.7–46.6) | 52.7% (48.1–57.5) | 30.3% (25.3–36.2) |
+| 10 | 53.9% (50.8–57.2) | 62.1% (57.4–66.9) | 40.4% (34.6–46.7) |
+| 15 | 62.9% (59.3–66.5) | 65.9% (60.8–70.8) | 54.4% (47.7–61.3) |
 
 ### Table 4. Log-rank tests
 
 | Comparison | Panel | χ² | df | p |
 |---|---|---|---|---|
-| Japan vs Korea (primary; source-asymmetric) | n = 1,895 | 5.80 | 1 | 0.016 |
-| Japan vs Korea (symmetric layer) | n = 853 | 4.23 | 1 | 0.040 |
+| Japan vs Korea (primary; source-asymmetric) | n = 1,895 | 4.67 | 1 | 0.031 |
+| Japan vs Korea (symmetric layer) | n = 853 | 20.32 | 1 | < 0.001 |
 | Sex (Japan, primary) | n = 1,258 | 6.96 | 1 | 0.008 |
-| Sex (Korea, primary) | n = 510 | 15.16 | 1 | < 0.001 |
-| Cohort (Japan, primary) | n = 1,346 | 10.35 | 5 | 0.066 |
-| Cohort (Korea, primary) | n = 549 | 4.37 | 5 | 0.498 |
+| Sex (Korea, primary) | n = 510 | 13.77 | 1 | < 0.001 |
+| Cohort (Japan, primary) | n = 1,346 | 10.26 | 5 | 0.068 |
+| Cohort (Korea, primary) | n = 549 | 14.45 | 5 | 0.013 |
 
-Comparisons across countries use panels built from different encyclopedias and are reported for completeness rather than as evidence of national difference.
+Cross-country comparisons use panels built from different encyclopedias; see Limitations 6.
 
 ### Table 5. Discrete-time conditional hazards, h(t) = deaths / risk set
 
 | Elapsed years | Japan (primary) | Korea (primary) | Japan (symmetric) |
 |---|---|---|---|
-| 1 | 6.0% (80/1,335) | 5.7% (31/545) | 3.6% (11/303) |
-| 2 | 6.8% (81/1,200) | 7.2% (35/489) | 4.2% (12/289) |
-| 3 | 7.7% (82/1,067) | 8.1% (35/432) | 4.4% (12/271) |
-| 4 | 8.2% (75/915) | 7.7% (28/366) | 5.3% (13/247) |
-| 5 | 9.0% (71/788) | 7.6% (24/317) | 6.7% (15/223) |
-| 6 | 8.6% (56/651) | 5.4% (15/278) | 3.9% (8/203) |
-| **7** | 7.9% (43/546) | **9.5% (23/243)** | 3.7% (7/187) |
-| 8 | 7.7% (35/456) | 4.4% (9/204) | 2.4% (4/166) |
-| 9 | 6.7% (26/388) | 5.0% (9/180) | 6.4% (10/157) |
-| 10 | 5.2% (17/329) | 2.6% (4/151) | 4.3% (6/138) |
-| 11 | 5.5% (15/275) | 1.6% (2/124) | 3.9% (5/127) |
-| 12 | 6.8% (15/219) | 1.8% (2/110) | 8.1% (9/111) |
+| 1 | 6.0% (80/1,335) | 6.6% (36/545) | 3.6% (11/303) |
+| 2 | 6.8% (82/1,200) | 9.5% (46/484) | 4.2% (12/289) |
+| 3 | 7.7% (82/1,066) | 10.6% (44/416) | 4.4% (12/271) |
+| 4 | 8.2% (75/915) | 9.9% (34/342) | 6.1% (15/247) |
+| 5 | 9.0% (71/788) | 9.7% (28/288) | 7.7% (17/221) |
+| 6 | 8.6% (56/651) | 9.3% (23/248) | 5.0% (10/199) |
+| **7** | 7.9% (43/546) | **14.6% (30/206)** | 3.9% (7/181) |
+| 8 | 7.7% (35/456) | 9.1% (15/164) | 3.1% (5/160) |
+| 9 | 6.7% (26/388) | 7.2% (10/138) | 6.7% (10/150) |
+| 10 | 5.2% (17/329) | 5.0% (6/120) | 5.3% (7/131) |
+| 11 | 5.5% (15/275) | 3.1% (3/96) | 5.0% (6/119) |
+| 12 | 6.8% (15/219) | 2.3% (2/86) | 8.8% (9/102) |
 
 ### Table 6. Excess-hazard test at t = 7 against pooled neighbours (t = 5, 6, 8, 9)
 
 | Panel | h(7) | Neighbour baseline | Ratio | p (one-sided) |
 |---|---|---|---|---|
-| Korea (primary) | 9.5% (23/243) | 5.8% | **1.63** | **0.016** |
+| Korea (primary) | 14.6% (30/206) | 9.1% | **1.61** | **0.007** |
 | Japan (primary) | 7.9% (43/546) | 8.2% | 0.96 | 0.642 |
-| Japan (symmetric) | 3.7% (7/187) | 4.9% | 0.76 | 0.821 |
+| Japan (symmetric) | 3.9% (7/181) | 5.8% | 0.67 | 0.901 |
 
-### Table 7. Falsification checks on the seven-year concentration
+### Table 7. Falsification checks on the seven-year spike
 
 | # | Alternative explanation | Result |
 |---|---|---|
 | 1 | t = 7 is the lucky year among many tested | Testing t = 2…12: Korea significant at t = 7 only, and largest ratio of 11; Japan significant nowhere, t = 7 ranks 9th of 11 |
-| 2 | A calendar-year dissolution wave | Deaths at t = 7 spread over 2014–2026; deleting the modal year leaves ratio 1.53, p = 0.041 |
-| 3 | A single parser's artifact | Share of deaths at t = 7 by source: category 11.0%, infobox 7.5%, lead text 11.8% |
-| 4 | Sensitivity to neighbourhood choice | Four alternative baselines give ratios 1.48–1.90, all p < 0.05 |
+| 2 | A calendar-year dissolution wave | Deaths at t = 7 spread over 2014–2026; deleting the modal year leaves ratio 1.55, p = 0.018 |
+| 3 | A single parser's artifact | Share of deaths at t = 7: category 11.0%, infobox 9.4% (lead text contributes only 3 deaths, too few to compare) |
+| 4 | Sensitivity to neighbourhood choice | Four alternative baselines give ratios 1.58–1.65, all p ≤ 0.008 |
 | 5 | Japanese null depends on death definition | Ratios 1.02 / 0.96 / 0.93 (conservative / strict / loose), none significant |
-| 6 | Cohort dependence | 2009–2025 formations: ratio 2.09, p < 0.001 (n = 465). 1996–2008: ratio 0.28 (n = 84; 54 at risk at t = 7, underpowered) |
-| 7 | Editorial rounding toward the contract narrative | **Cannot be excluded** — see Limitations 3 |
+| 6 | Cohort dependence | 2009–2025 formations: ratio 1.92, p < 0.001 (n = 465). 1996–2008: ratio 0.28 (n = 84; 54 at risk at t = 7, underpowered) |
+| 7 | Editorial rounding toward the contract narrative | **Cannot be excluded** — see Limitations 2 |
 
 ### Table 8. Complementary log-log discrete-time hazard models
 
 | Specification | Term | Hazard ratio | 95% CI | p |
 |---|---|---|---|---|
-| Pooled symmetric layer (853 groups, 7,199 person-periods) | t = 7 (Japan, reference country) | 0.65 | 0.30–1.44 | 0.291 |
-| Pooled symmetric layer | t = 7 × Korea | **2.72** | 1.07–6.88 | **0.035** |
-| Korea (primary), fitted alone | t = 7 | 1.78 | 1.09–2.90 | 0.021 |
-| Japan (primary), fitted alone | t = 7 | 0.93 | 0.67–1.29 | 0.650 |
+| Pooled symmetric layer (853 groups, 6,783 person-periods) | t = 7 (Japan, reference country) | 0.58 | 0.27–1.28 | 0.179 |
+| Pooled symmetric layer | t = 7 × Korea | **2.95** | 1.21–7.20 | **0.018** |
+| Korea (primary), fitted alone | t = 7 | 1.72 | 1.13–2.64 | 0.012 |
+| Japan (primary), fitted alone | t = 7 | 0.93 | 0.67–1.29 | 0.651 |
 
 Baseline hazard modelled as a cubic polynomial in t, estimated separately by country.
 
-### Table 9. Cox model A — pooled, source-symmetric layer (n = 853; 349 events; concordance 0.597)
+### Table 9. Cox model A — pooled, source-symmetric layer (n = 853; 423 events; concordance 0.619)
 
 | Covariate | Hazard ratio | 95% CI | p | Schoenfeld p |
 |---|---|---|---|---|
-| Country: Korea | 1.55 | 1.23–1.96 | < 0.001 | 0.417 |
-| Sex: male | 0.50 | 0.40–0.64 | < 0.001 | 0.141 |
-| Sex: mixed | 0.58 | 0.28–1.19 | 0.137 | 0.180 |
-| Sex: unknown† | 0.39 | 0.21–0.74 | 0.004 | 0.119 |
-| Cohort 2001–2005 | 0.83 | 0.48–1.42 | 0.487 | 0.850 |
-| Cohort 2006–2010 | 0.76 | 0.48–1.22 | 0.261 | 0.442 |
-| Cohort 2011–2015 | 0.78 | 0.50–1.21 | 0.271 | 0.715 |
-| Cohort 2016–2020 | 0.83 | 0.53–1.30 | 0.416 | 0.761 |
-| Cohort 2021–2025 | 0.66 | 0.37–1.16 | 0.148 | 0.956 |
+| Country: Korea | 1.95 | 1.57–2.42 | < 0.001 | 0.756 |
+| Sex: male | 0.55 | 0.44–0.68 | < 0.001 | **0.043** |
+| Sex: mixed | 0.45 | 0.22–0.93 | 0.031 | 0.097 |
+| Sex: unknown† | 0.42 | 0.24–0.74 | 0.002 | 0.050 |
+| Cohort 2001–2005 | 0.88 | 0.52–1.49 | 0.628 | 0.532 |
+| Cohort 2006–2010 | 0.93 | 0.59–1.47 | 0.755 | 0.201 |
+| Cohort 2011–2015 | 1.16 | 0.75–1.77 | 0.508 | 0.234 |
+| Cohort 2016–2020 | 1.22 | 0.79–1.90 | 0.368 | 0.714 |
+| Cohort 2021–2025 | 0.89 | 0.52–1.53 | 0.673 | 0.625 |
 
-References: Japan, female, cohort 1996–2000. † Missingness indicator; not interpreted (see Methods).
+References: Japan, female, cohort 1996–2000. † Missingness indicator; not interpreted. Bold marks rejection of proportionality.
 
-### Table 10. Cox model B — Japan only, with agency size (n = 1,346; 632 events; concordance 0.570)
+### Table 10. Cox model B — Japan only, with agency size (n = 1,346; 633 events; concordance 0.568)
 
 | Covariate | Hazard ratio | 95% CI | p | Schoenfeld p |
 |---|---|---|---|---|
-| Sex: male | 0.62 | 0.47–0.83 | 0.001 | 0.293 |
-| Sex: mixed | 1.97 | 1.10–3.52 | 0.023 | 0.538 |
-| Sex: unknown† | 0.57 | 0.38–0.84 | 0.005 | 0.851 |
-| Agency size 2–4 groups | 0.79 | 0.63–0.98 | 0.033 | 0.233 |
-| Agency size 5–9 groups | 1.10 | 0.82–1.47 | 0.522 | 0.813 |
-| Agency size 10+ groups | 1.23 | 0.96–1.57 | 0.099 | 0.524 |
-| Agency size unknown† | 0.88 | 0.70–1.11 | 0.275 | **< 0.001** |
-| Cohort 2001–2005 | 0.89 | 0.53–1.51 | 0.674 | 0.313 |
-| Cohort 2006–2010 | 0.77 | 0.48–1.22 | 0.260 | 0.125 |
-| Cohort 2011–2015 | 0.88 | 0.57–1.35 | 0.556 | **0.001** |
-| Cohort 2016–2020 | 1.16 | 0.75–1.78 | 0.510 | **0.035** |
-| Cohort 2021–2025 | 0.96 | 0.60–1.54 | 0.853 | 0.067 |
+| Sex: male | 0.63 | 0.47–0.84 | 0.001 | 0.293 |
+| Sex: mixed | 1.96 | 1.10–3.52 | 0.023 | 0.536 |
+| Sex: unknown† | 0.59 | 0.40–0.87 | 0.008 | 0.705 |
+| Agency size 2–4 groups† | 0.79 | 0.64–0.99 | 0.040 | 0.263 |
+| Agency size 5–9 groups† | 1.10 | 0.82–1.47 | 0.517 | 0.810 |
+| Agency size 10+ groups† | 1.23 | 0.96–1.56 | 0.102 | 0.519 |
+| Agency size unknown† | 0.88 | 0.70–1.11 | 0.271 | **< 0.001** |
+| Cohort 2001–2005 | 0.89 | 0.53–1.51 | 0.669 | 0.309 |
+| Cohort 2006–2010 | 0.77 | 0.48–1.22 | 0.257 | 0.122 |
+| Cohort 2011–2015 | 0.88 | 0.57–1.35 | 0.551 | **0.001** |
+| Cohort 2016–2020 | 1.15 | 0.75–1.78 | 0.515 | **0.034** |
+| Cohort 2021–2025 | 0.97 | 0.60–1.55 | 0.892 | 0.065 |
 
-References: female, single-group agency, cohort 1996–2000. † Missingness indicator; not interpreted. Bold Schoenfeld p values mark covariates for which proportionality is rejected.
+References: female, single-group agency, cohort 1996–2000. † Not interpreted: missingness indicators, and agency size encodes post-baseline information (see Methods). Bold marks rejection of proportionality.
 
 ### Table 11. Sensitivity analyses
 
 | Variation | Japan n | Japan 3-year | Korea n | Korea 3-year | Korea t = 7 ratio (p) |
 |---|---|---|---|---|---|
-| Primary (1996–2025, strict) | 1,346 | 19.7% | 549 | 20.1% | 1.63 (0.016) |
-| Window 2009–2025 | 1,207 | 19.4% | 465 | 21.1% | — |
-| Window 1996–2022 | 1,151 | 20.6% | 465 | 21.3% | — |
+| Primary (1996–2025, strict) | 1,346 | 19.8% | 549 | 25.0% | 1.61 (0.007) |
+| Window 2009–2025 | 1,207 | 19.5% | 465 | 26.9% | — |
+| Window 1996–2022 | 1,151 | 20.6% | 465 | 26.5% | — |
 | Death definition: conservative | 1,346 | 14.6% | — | — | 1.02 (0.473) ‡ |
-| Death definition: loose | 1,346 | 20.6% | — | — | 0.93 (0.711) ‡ |
-| Definition-sensitive groups removed | 1,234 | 20.2% | — | — | — |
-| Korea: year-unknown deaths excluded | — | — | 503 | 22.0% | 1.64 (0.014) |
+| Death definition: loose | 1,346 | 20.7% | — | — | 0.93 (0.711) ‡ |
+| Definition-sensitive groups removed | 1,234 | 20.3% | — | — | — |
+| Korea: year-unknown deaths excluded | — | — | 534 | 25.7% | 1.61 (0.006) |
+| Korea: clock re-anchored on activity start | — | — | 488 | — | 1.54 (0.023) |
 
 ‡ Japanese ratio under that definition. The Korean panel supports only one death definition.
 
@@ -445,9 +462,9 @@ References: female, single-group agency, cohort 1996–2000. † Missingness ind
 
 ## Figure Legends
 
-**Figure 1. Kaplan–Meier survival curves.** Two panels. *Left:* primary analysis, using the most complete source for each country (Japan from ja.wikipedia, n = 1,346; Korea from en.wikipedia, n = 549). *Right:* source-symmetric sensitivity analysis, with both countries measured on en.wikipedia (Japan n = 304; Korea n = 549). Shaded bands are 95% confidence intervals and the dashed vertical line marks the seven-year contractual benchmark. Both panels are truncated at 20 years. In the left panel the two curves track one another closely through the first seven years and separate thereafter; in the right panel the Japanese curve lies above the Korean throughout, which reflects the coverage asymmetry discussed in the text rather than a national difference.
+**Figure 1. Kaplan–Meier survival curves.** Two panels. *Left:* primary analysis, using the most complete source for each country (Japan from ja.wikipedia, n = 1,346; Korea from en.wikipedia, n = 549). *Right:* source-symmetric sensitivity analysis, with both countries measured on en.wikipedia (Japan n = 304; Korea n = 549). Shaded bands are 95% confidence intervals and the dashed vertical line marks the seven-year contractual benchmark. Both panels are truncated at 20 years. The Korean curve lies below the Japanese in the left panel from roughly year three onward; in the right panel the gap is wider, reflecting the coverage asymmetry discussed in the text rather than a purer estimate of national difference.
 
-**Figure 2. Discrete-time conditional hazards by year since formation.** Hazard h(t) = deaths in year t divided by the risk set entering year t, plotted for t = 1…12 to match Table 5. Shaded bands are 95% confidence intervals, shown for every series. The Korean series dips at t = 6, peaks at t = 7, and falls at t = 8; the Japanese primary series peaks at t = 5 and declines smoothly, with nothing distinctive at t = 7. The pointwise confidence bands are wide relative to the size of the year-seven excess and overlap substantially between series, so this figure should be read together with the formal tests in Tables 6 and 8 rather than on its own.
+**Figure 2. Discrete-time conditional hazards by year since formation.** Hazard h(t) = deaths in year t divided by the risk set entering year t, plotted for t = 1…12 to match Table 5. Shaded bands are 95% confidence intervals, shown for every series. The Korean series runs at 9–10% through year six, peaks at 14.6% at year seven, and falls back to 9.1% at year eight; the Japanese primary series peaks at year five and declines smoothly, with nothing distinctive at year seven. The pointwise confidence bands are wide relative to the size of the year-seven excess and overlap between series, so this figure should be read together with the formal tests in Tables 6 and 8 rather than on its own.
 
 **Figure 3. Survival by sex.** Kaplan–Meier curves for male and female groups, in two panels. *Left:* Japan, ja.wikipedia (female n = 1,108; male n = 150). *Right:* Korea, en.wikipedia (female n = 235; male n = 275). Shaded bands are 95% confidence intervals. Male groups show longer survival in both countries. Groups coded mixed or unknown are omitted from this figure but retained in all models.
 
