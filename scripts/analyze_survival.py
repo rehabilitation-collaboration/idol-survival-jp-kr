@@ -32,6 +32,10 @@ PLOTS = os.path.join(ROOT, "plots")
 
 TIMES = [1, 2, 3, 5, 7, 10, 15]
 
+# ハザード図の描画上限。results/analysis.md §4.1 の表と同じ範囲にする
+# (図だけ 15 年まで伸ばすと表と食い違って見える)。
+HAZARD_PLOT_TMAX = 12
+
 
 def load_panels():
     """3 つの母集団を同じ列名に揃える。
@@ -124,13 +128,16 @@ def plot_hazard(panels, path):
                               ("jp_en", "Japan (en.wikipedia)", "#7fb3d5"),
                               ("kr_en", "Korea (en.wikipedia)", "#d62728")]:
         p = panels[key]
-        h = sa.discrete_hazard(p["duration"], p["event"], t_max=15)
+        # 表 5 (t = 1..12) と描画範囲を揃える。t >= 13 はリスク集合が薄く、
+        # 図だけ先まで伸ばすと本文の表と読者の目に映る範囲がずれる。
+        h = sa.discrete_hazard(p["duration"], p["event"], t_max=HAZARD_PLOT_TMAX)
         h = h[h["t"] >= 1]
         ax.plot(h["t"], h["hazard"], marker="o", ms=4, color=color,
                 label=f"{label} (n={len(p)})")
-        if key == "kr_en":
-            ax.fill_between(h["t"], h["ci_low"], h["ci_high"],
-                            color=color, alpha=0.12)
+        # 信頼区間は全系列に出す。1 群だけ帯を付けるとその群の山を
+        # 強調しているように見えるため。
+        ax.fill_between(h["t"], h["ci_low"], h["ci_high"],
+                        color=color, alpha=0.10, linewidth=0)
     ax.axvline(sa.CONTRACT_YEARS, color="gray", ls="--", lw=1)
     # 注釈が枠外や凡例と重ならないよう、上端に余白を作ってから内側に置く
     top = ax.get_ylim()[1] * 1.18
@@ -142,7 +149,7 @@ def plot_hazard(panels, path):
     ax.set_xlabel("Years since formation")
     ax.set_ylabel("Conditional hazard of dissolution")
     ax.set_title("Discrete-time hazard by year since formation", fontsize=10)
-    ax.set_xticks(range(1, 16))
+    ax.set_xticks(range(1, HAZARD_PLOT_TMAX + 1))
     ax.legend(fontsize=8)
     fig.tight_layout()
     fig.savefig(path, dpi=200)
