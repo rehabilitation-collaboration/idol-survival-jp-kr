@@ -5,3 +5,5 @@ statsmodels
 matplotlib
 requests
 pytest
+weasyprint
+markdown
