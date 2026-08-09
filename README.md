@@ -2,7 +2,7 @@
 
 Replication and cross-national extension of a full-census survival analysis of idol groups.
 
-**Status: analysis complete, manuscript not yet written.** Both populations are built (Japan n = 1,346 from ja.wikipedia; Korea n = 549 from en.wikipedia) and the survival analysis has been run. The manuscript has not been written and nothing has been peer reviewed, so results here should be treated as a preprint-stage working record rather than as published findings.
+**Status: analysis complete, manuscript drafted, not yet reviewed or submitted.** Both populations are built (Japan n = 1,346 from ja.wikipedia; Korea n = 549 from en.wikipedia), the survival analysis has been run, and a full draft is in `manuscript.md` (build the PDF with `python generate_pdf.py`). Nothing has been peer reviewed and nothing has been submitted, so results here should be treated as a preprint-stage working record rather than as published findings.
 
 ## Research question
 

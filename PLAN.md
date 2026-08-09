@@ -616,11 +616,25 @@ Kim (2026) がアブストラクトで述べる「中ヒットから大ヒット
 
 - [x] **専属契約制度の一次確認 (日韓)** → `refs/REFERENCE-contract-institutions-jp-kr.md` (2026-08-09)
 - [x] **著者情報・Ethics 節の先例踏襲を確定** (先例 `kokutai-home-advantage/manuscript.md` を実読・2026-08-09)
-- [ ] manuscript.md 執筆 (IMRaD・Abstract 250-300 words・本文 25pp target)
-- [ ] PDF 生成 (weasyprint) → `pdftotext -layout` self-QA 100%
+- [x] **manuscript.md 執筆** (2026-08-09)。IMRaD・**Abstract 292 words** (target 内)・**PDF 24pp** (25pp target 内)・Limitations 7 項目 (5-7 上限内)
+- [x] **参考文献の全件検証** (CrossRef・2026-08-09)。**誤り 2 件を修正** — Im, Song & Jung (2018) の頁は 1614-1625 ではなく **1675-1686** / Peterson & Berger (1975) は終了頁が CrossRef・OpenAlex とも未登録のため**開始頁のみ**記載
+- [x] **PDF 生成** (`generate_pdf.py`・weasyprint) → `pdftotext -layout` self-QA。**全 13 表・全 3 図が出力・日韓 CJK も正常**
 - [ ] asura-monju レビュー → 修正
 - [ ] GPT 査読サイクル → Accept 到達
 - [ ] SSRN 投稿 → POSTED
+
+#### Phase 6 の自己 QA 結果 (2026-08-09)
+
+| 項目 | 結果 |
+|---|---|
+| Abstract 語数 | **292 words** (target 250-300) |
+| 本文 | **24 pp** (target 25pp) |
+| Limitations | **7 項目** (上限 7) |
+| 数値照合 (`results/analysis.md` と機械照合) | **66 項目中 66 一致** (1 件は en dash の表記差でスクリプト側の問題) |
+| 参考文献 | CrossRef 全件検証・**2 件修正** |
+| 表・図 | 13 表 / 3 図すべて PDF に出力 |
+
+再現コマンド: `.venv/bin/python generate_pdf.py` → `output/manuscript.pdf`
 
 ---
 
